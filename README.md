@@ -1,7 +1,17 @@
 default-data-science-project
 ==============================
 
-A default project structure for data projects
+A default project structure for data projects. Created with reproducibility and automation in mind.
+Data should be kept within a Make pipeline.  
+
+To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
+environment properly.
+
+> . ./setup.sh
+
+This will initialize a git repo and make a first commit. It will also create a conda environment and
+kernel with the name specified in the config file before installing dependencies.
+
 
 Project Organization
 ------------
@@ -21,7 +31,7 @@ Project Organization
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    │                         `01.0-jqp-initial-data-exploration`.
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -30,6 +40,9 @@ Project Organization
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
+	|
+    ├── setup.sh           <- Script to initiailize git repo, setup a conda virtual environment  
+    │                         and install dependencies.
     │
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
@@ -45,12 +58,19 @@ Project Organization
     │   │   ├── predict_model.py
     │   │   └── train_model.py
     │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
+    │   ├── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │   │     └── visualize.py
+    │   │ 
+    │   └── utils          <- Utility code for various purposes and packages
+    │       │                 
+    │       ├── text_utils.py
+    │       ├── pandas_utils.py
+    │       ├── eda.py
+    │       ├── profile-data.py
+    │       ├── change-to-root-load-config.py
+    │       └── connect_to_db.py
+    │       
     └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 
 
 --------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
