@@ -2,7 +2,7 @@ default-data-science-project
 ==============================
 
 A default project structure for data projects. Created with reproducibility and automation in mind.
-Data and script execution should be kept within the Make pipeline.  
+Data and script execution should be kept within the Make pipeline. 
 
 To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
 environment properly.
@@ -72,5 +72,8 @@ Project Organization
     │       
     └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 
+
+
+Much of the boilerplate code and structure for this comes from [Driven Data's Cookie Cutter Data Science](https://github.com/drivendata/cookiecutter-data-science)
 
 --------
