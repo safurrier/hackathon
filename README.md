@@ -2,7 +2,7 @@ default-data-science-project
 ==============================
 
 A default project structure for data projects. Created with reproducibility and automation in mind.
-Data should be kept within a Make pipeline.  
+Data and script execution should be kept within the Make pipeline.  
 
 To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
 environment properly.
