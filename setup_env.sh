@@ -26,7 +26,7 @@ eval $(parse_yaml config.yaml)
 # Create conda environment with project name
 echo y | conda create --name $project_name python jupyter
 # Attach kernel of this environment for use with jupyter 
-kernel_name='Python'$project_name
+kernel_name='Python '$project_name
 python -m ipykernel install --user --name $project_name --display-name $kernel_name
 
 # Activate environment, install requirements 
