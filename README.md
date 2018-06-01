@@ -7,7 +7,7 @@ Data and script execution should be kept within the Make pipeline.
 To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
 environment properly.
 
-> . ./setup.sh
+> . ./setup_env.sh
 
 This will initialize a git repo and make a first commit. It will also create a conda environment and
 kernel with the name specified in the config file before installing dependencies.
