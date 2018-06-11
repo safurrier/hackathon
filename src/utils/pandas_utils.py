@@ -186,7 +186,7 @@ def pct_change_from_col(df, anchor_col, diff_col):
     """
     return (df[anchor_col] - df[diff_col]) / df[anchor_col]
 
-def numeric_col_non_categoric(series, positive_val=1, negative_val=0, cardinality_limit = 1):
+def is_numeric_non_categoric(series, positive_val=1, negative_val=0, cardinality_limit = 1):
     """
     Check a series to see if it is numeric and has values other two designated
     positive and negative states (default is 0 and 1). Also check for a cardinality limit.
