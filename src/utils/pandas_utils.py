@@ -185,3 +185,41 @@ def pct_change_from_col(df, anchor_col, diff_col):
 
     """
     return (df[anchor_col] - df[diff_col]) / df[anchor_col]
+
+def numeric_col_non_categoric(series, positive_val=1, negative_val=0, cardinality_limit = 1):
+    """
+    Check a series to see if it is numeric and has values other two designated
+    positive and negative states (default is 0 and 1). Also check for a cardinality limit.
+    Will return False if number of unique values is not above this (default is 1)
+
+    Parameters
+    ----------
+    series : Series
+        A pandas series to check
+    positive_val : int
+        The positive value if series were to be binary
+    negative_val : int
+        The negative value if the series were to be binary
+    cardinality_limit : int
+        A limit to the cardinality of the series. Anything below this limit will return False.
+        For use when there may be integer transformed categories
+            (e.g. series Fruit has categories 'Apple', 'Orange', 'Banana' mapped to 1, 2, 3)
+
+    Returns
+    -------
+    Boolean
+        True if column appears to be numeric, non binary with cardinality above the specified limit
+    """
+    # The first condition checks if all values are real numbers
+
+    # Check if there are other values in a column besides the designated positive or negative class
+    # If the size of the returned array is > 0, it's not binary
+    try:
+        return (np.isreal(series).all()) \
+    & (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0) \
+    & (len(series.unique()) > cardinality_limit)
+    # Type Error occurs when float is compared to string, which would constitute non binary
+    # Since this would only occur if there is not a match between the positive/negative values
+    # Unique values of the column
+    except TypeError:
+        return False
