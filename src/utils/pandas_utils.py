@@ -210,14 +210,19 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, cardinality
     Boolean
         True if column appears to be numeric, non binary with cardinality above the specified limit
     """
-    # The first condition checks if all values are real numbers
 
+
+    try:
+        # Cehck if series dtype is a numpy number
+        return (np.issubdtype(series.dtype, np.number)) \
     # Check if there are other values in a column besides the designated positive or negative class
     # If the size of the returned array is > 0, it's not binary
-    try:
-        return (np.isreal(series).all()) \
     & (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0) \
+
+    # Check if the number of unique values in the series is above the cardinality limit
     & (len(series.unique()) > cardinality_limit)
+
+
     # Type Error occurs when float is compared to string, which would constitute non binary
     # Since this would only occur if there is not a match between the positive/negative values
     # Unique values of the column
