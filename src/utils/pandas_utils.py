@@ -2,27 +2,27 @@ import numpy as np
 import pandas
 
 def find_null_columns(df):
-    """ 
+    """
     Return a list of columns with null values
-    
+
     Args:
     df - dataframe - Dataframe to check columns of
-    
+
     Returns:
     list of null columns
     """
     return df.columns[df.isnull().any()].tolist()
 
-    
+
 def null_column_report(df, total=True, percent=True, ):
-    """ 
+    """
     Print each null column column in a dataframe that is null as well as percent null
-    
+
     Args:
     df - pandas dataframe
-    total - boolean - Flag to indicate whether to print total null records per column    
+    total - boolean - Flag to indicate whether to print total null records per column
     percent - boolean - Flag to indicate whether to print percent of column that is null
-    
+
     Returns:
     None
     """
@@ -33,7 +33,7 @@ def null_column_report(df, total=True, percent=True, ):
         print(col)
         if total:
             print('Total Nulls:')
-            print(total_null_records)        
+            print(total_null_records)
         if percent:
             print('Percent Null:')
             print(round(total_null_records/df.shape[0], 2))
@@ -43,10 +43,10 @@ def null_column_report(df, total=True, percent=True, ):
 
 def column_comparison(series, col1, col2, comparison='equal', pos_return_val=1, neg_return_val=0):
     """
-    Apply to a dataframe row to return a binary feature depending on equality or inequality 
-    
-    E.g. df.apply(lambda s: column_match(s, 'day_of_week', 'day_of_sale'), axis=1) to for matching the two. 
-    Result is series of positive_return_vals and neg_return_vals. Defaults to 
+    Apply to a dataframe row to return a binary feature depending on equality or inequality
+
+    E.g. df.apply(lambda s: column_match(s, 'day_of_week', 'day_of_sale'), axis=1) to for matching the two.
+    Result is series of positive_return_vals and neg_return_vals. Defaults to
     """
     if comparison == 'equal':
         if series[col1] == series[col2]:
@@ -58,25 +58,25 @@ def column_comparison(series, col1, col2, comparison='equal', pos_return_val=1, 
             return pos_return_val
         else:
             return neg_return_val
-        
+
 def dummies_from_bins(df, col, bins, bin_labels, col_prefix):
     """
-    Given a dataframe and column to create binary features from bins, return dummy columns of said bins 
+    Given a dataframe and column to create binary features from bins, return dummy columns of said bins
     concatenated onto the end of the df
     """
     # cut the column values into bins. the labels provided are the returned values
     # bins must increase monotonically
-    binned_values = pandas.cut(df[col], 
+    binned_values = pandas.cut(df[col],
                            bins=bins,
                            labels=bin_labels)
-    
+
     # Create dummy variables and add prefix to col label
     dummies_cols = pandas.get_dummies(binned_values).add_prefix(col_prefix)
-    
+
     # Concatenate onto end of original df
     df = pandas.concat([df, dummies_cols], axis=1)
     return df
-    
+
 
 def bin_apply(s, feature_col, min_val, max_val,binary=False):
     """
@@ -86,7 +86,7 @@ def bin_apply(s, feature_col, min_val, max_val,binary=False):
     E.g.:
     df.apply(lambda s: bin_feature_binary(s, 'hazard_rank', 0, 3), axis=1) to create a binary feature that returns
     1 if hazard group is between 0-3 and 0 if otherwise
-    
+
     """
     if (s[feature_col] >= min_val) & (s[feature_col] <= max_val):
         if binary:
@@ -98,17 +98,17 @@ def bin_apply(s, feature_col, min_val, max_val,binary=False):
             return 0
         else:
             return np.nan
-    
+
 def bin_df_feature(df, feature_col, min_val, max_val, binary=False):
     """
-    Given a dataframe, feature column (series), bin edges, return a new series whose values are those that fit within the 
+    Given a dataframe, feature column (series), bin edges, return a new series whose values are those that fit within the
     bin edges. Optionally denote if binary response (1 if present, 0 otherwise)
     """
     if binary:
         return df.apply(lambda s: bin_apply(s, feature_col, min_val, max_val, binary=True), axis=1)
     else:
         return df.apply(lambda s: bin_apply(s, feature_col, min_val, max_val, binary=False), axis=1)
-    
+
 def binary_feature(df, feat_col, value, binary_feature_col_name=None, concat=False):
     """
     Given a dataframe, feature column name and value to check, return a series of binary responses 1 and 0
@@ -118,7 +118,7 @@ def binary_feature(df, feat_col, value, binary_feature_col_name=None, concat=Fal
     # If binary_feature_col_name is none use this instead
     if not binary_feature_col_name:
         binary_feature_col_name = feat_col+'_is_'+str(value)
-    
+
     def is_value_present(s, value):
         """
         Given a series and a value, return a binary feature 1 if present and 0 if otherwise
@@ -133,7 +133,7 @@ def binary_feature(df, feat_col, value, binary_feature_col_name=None, concat=Fal
     binary_feature.name = binary_feature_col_name
     if concat:
         return pandas.concat([df, binary_feature], axis=1)
-    return binary_feature   
+    return binary_feature
 
 def scale_feature(df, feat_col, scale, value, scaled_feature_col_name=None, concat=False):
     """
@@ -144,7 +144,7 @@ def scale_feature(df, feat_col, scale, value, scaled_feature_col_name=None, conc
     # If weighted_feature_col_name is none use this instead
     if not scaled_feature_col_name:
         scaled_feature_col_name = feat_col+'_weighted'
-    
+
     def scale_value(s, value):
         """
         Given a series and a value, return a binary feature 1 if present and 0 if otherwise
@@ -160,3 +160,28 @@ def scale_feature(df, feat_col, scale, value, scaled_feature_col_name=None, conc
     if concat:
         return pandas.concat([df, scaled_feature], axis=1)
     return scaled_feature
+
+def pct_change_from_col(df, anchor_col, diff_col):
+    """ Given two columns of values, compute the percent change
+        in vectorized manner
+
+    Parameters
+    ----------
+    df : DataFrame
+        Dataframe of data
+    anchor_col : str
+        The column name of from which to compute the percent differenc **from**
+    diff_col : str
+        The column name of from which to compute the percent differenc **to**
+    Returns
+    -------
+    Series
+        A Series of the percent change from the anchor column to the difference
+        column
+
+    Example
+    -------
+    df['Pct_Change_Jan_to_Feb'] = pct_change(df, 'Sales_Jan', 'Sales_Feb')
+
+    """
+    return (df[anchor_col] - df[diff_col]) / df[anchor_col]
