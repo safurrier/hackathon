@@ -10,7 +10,7 @@ for x in range(0, num_retries):
     # try to load config file
     try:
         with open("config.yaml", 'r') as stream:
-            data_loaded = yaml.safe_load(stream)
+            cfg = yaml.safe_load(stream)
     # If not found move back one directory level
     except FileNotFoundError:
         os.chdir('../')
