@@ -1,13 +1,13 @@
 import ruamel.yaml as yaml
 import os
-NO_CONFIG_ERR_MSG = """No config file found. Root directory is determined by presence of "config.yaml" file."""        
+NO_CONFIG_ERR_MSG = """No config file found. Root directory is determined by presence of "config.yaml" file."""
 
 original_wd = os.getcwd()
 
 # Number of times to move back in directory
 num_retries = 10
 for x in range(0, num_retries):
-    # try to load config file    
+    # try to load config file
     try:
         with open("config.yaml", 'r') as stream:
             data_loaded = yaml.safe_load(stream)
@@ -18,3 +18,10 @@ for x in range(0, num_retries):
         if x+1 == num_retries:
             os.chdir(original_wd)
             print(NO_CONFIG_ERR_MSG)
+
+
+# Add directory to PATH
+path = os.getcwd()
+
+if path not in sys.path:
+    sys.path.append(path)            
