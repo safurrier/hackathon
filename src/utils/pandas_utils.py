@@ -1,6 +1,10 @@
 import numpy as np
 import pandas
 
+def identity_df(df):
+    """ Return the dataframe. For use with decorators"""
+    return df
+
 def find_null_columns(df):
     """
     Return a list of columns with null values
@@ -186,7 +190,7 @@ def pct_change_from_col(df, anchor_col, diff_col):
     """
     return (df[anchor_col] - df[diff_col]) / df[anchor_col]
 
-def is_numeric_non_categoric(series, positive_val=1, negative_val=0, cardinality_limit = 1):
+def is_numeric_non_categoric(series, positive_val=1, negative_val=0, min_cardinality = 1):
     """
     Check a series to see if it is numeric and has values other two designated
     positive and negative states (default is 0 and 1). Also check for a cardinality limit.
@@ -200,7 +204,7 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, cardinality
         The positive value if series were to be binary
     negative_val : int
         The negative value if the series were to be binary
-    cardinality_limit : int
+    min_cardinality : int
         A limit to the cardinality of the series. Anything below this limit will return False.
         For use when there may be integer transformed categories
             (e.g. series Fruit has categories 'Apple', 'Orange', 'Banana' mapped to 1, 2, 3)
@@ -210,18 +214,16 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, cardinality
     Boolean
         True if column appears to be numeric, non binary with cardinality above the specified limit
     """
-
-
-    try:
-        # Cehck if series dtype is a numpy number
-        return (np.issubdtype(series.dtype, np.number)) \
+    # Check if series dtype is a numpy number
+    is_numeric = (np.issubdtype(series.dtype, np.number))
     # Check if there are other values in a column besides the designated positive or negative class
     # If the size of the returned array is > 0, it's not binary
-    & (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0) \
-
+    is_non_binary = (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0)
     # Check if the number of unique values in the series is above the cardinality limit
-    & (len(series.unique()) > cardinality_limit)
+    is_above_cardinality_minimum =  (len(series.unique()) > cardinality_limit)
 
+    try:
+        return is_numeric & is_non_binary & is_above_cardinality_minimum
 
     # Type Error occurs when float is compared to string, which would constitute non binary
     # Since this would only occur if there is not a match between the positive/negative values
