@@ -3,8 +3,9 @@ from sklearn.preprocessing import FunctionTransformer
 from sklearn.base import TransformerMixin
 
 
-class NumericCommaRemover(TransformerMixin):
-    """Take a string column and remove commas and transform to numeric
+class NumericStringCharacterRemover(TransformerMixin):
+    """Take a string column and remove common formatting characters
+    (e.g. 1,000 to 1000 and $10 to 10) and transform to numeric
 
     Parameters
     ----------
@@ -21,7 +22,7 @@ class NumericCommaRemover(TransformerMixin):
     def fit(self, X, y=None):
         # Within the selected columns, regex search for commas and replace
         # with whitespace
-        self.no_commas = X[self.columns].replace(to_replace=',', regex=True, value='')
+        self.no_commas = X[self.columns].replace(to_replace={',','\$', '-'}, value='', regex=True)
         return self
 
     def transform(self, X, y=None):
