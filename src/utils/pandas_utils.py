@@ -1,6 +1,161 @@
 import numpy as np
 import pandas
 
+def quantile_binned_feature(df, col, quantiles=10, new_col_name=None,
+                            attempt_smaller_quantiles_if_necessary=True, return_df=False):
+    """ Discretize a continuous feature by seperating it into specified quantiles
+    Parameters
+    ----------
+    df : Pandas DataFrame
+        A dataframe containing the data to transform
+    col: str
+        The name of the column to transform into 'quantiles' number of equal bins
+    quantiles: int
+        The number of quantiles to cut the features into
+    new_col_name: str
+        The name to give the new column of transformed data.
+        Default is col + '_cut_into_'+str(quantiles)+'_equal_bins'
+    attempt_smaller_quantiles_if_necessary: boolean
+        Flag to specify whether to recursively try smaller numbers of quantiles until
+        the feature can be split into 'quantiles' number of equal groups.
+        Default is True
+    return_df : boolean
+        Flag to return the entire DataFrame or just the transformed data
+        Default is set to False
+
+    Returns
+    ----------
+    df_copy[new_col_name]: Pandas Series
+        Default return is Pandas Series of transformed data
+    df_copy: Pandas DataFrame
+        If specified with return_df=True, A copy of the dataframe including transformed data
+    """
+    import pandas as pd
+    import numpy as np
+    # Recursive version
+    if attempt_smaller_quantiles_if_necessary:
+        # Base case
+        if quantiles == 0:
+            print('Unable to bin column into equal groups')
+            pass
+        try:
+            new_col = pd.qcut(df[col], quantiles, labels=[i+1 for i in range(quantiles)])
+            # Change default name if none specified
+            if not new_col_name:
+                new_col_name = col + '_cut_into_'+str(quantiles)+'_equal_bins'
+                new_col.name = new_col_name
+
+            # Copy df to not alter original
+            df_copy = df.copy()
+            df_copy[new_col_name] = new_col
+
+            # Return df or transformed data
+            if return_df:
+                return df_copy
+            else:
+                return new_col
+        # If unable to cut into equal quantiles with this few of bins, reduce by one and try again
+        except ValueError:
+            #print(quantiles)
+            return_val = quantile_binned_feature(df, col, quantiles=quantiles-1, new_col_name=new_col_name, return_df=return_df)
+            return return_val
+    # Single attempt
+    else:
+        new_col = pd.qcut(df[col], quantiles, labels=[i for i in range(quantiles)])
+            # Change default name if none specified
+        if not new_col_name:
+            new_col_name = col + '_cut_into_'+str(quantiles)+'_equal_bins'
+            new_col.name = new_col_name
+
+        # Copy df to not alter original
+        df_copy = df.copy()
+        df_copy[new_col_name] = new_col
+
+        # Return df or transformed data
+        if return_df:
+            return df_copy
+        else:
+            return new_col
+
+def log_of_x_plus_constant(df, data=None, constant=1, new_col_name=None, return_df=False):
+    """ Apply log(x+1) where x is an array of data in df[data]
+    Parameters
+    ----------
+    df : Pandas DataFrame
+        A dataframe containing the data to transform
+    constant: int/float
+        The value to add to the data before taking the natural log.
+        Default value is 1
+    new_col_name: str
+        The name to give the new column of transformed data.
+        Default is Log( constant + data columnd name)
+    return_df : boolean
+        Flag to return the entire DataFrame or just the transformed data
+        Default is set to False
+
+    Returns
+    ----------
+    df_copy[new_col_name]: Pandas Series
+        Default return is Pandas Series of transformed data
+    df_copy: Pandas DataFrame
+        If specified with return_df=True, A copy of the dataframe including transformed data
+    """
+    import pandas as pd
+    import numpy as np
+
+    if not data:
+        print('Must specify data column')
+        pass
+    # Default column name for transformed column
+    if not new_col_name:
+        new_col_name = 'Log(' + str(constant) + '+ ' + df[data].name + ')'
+    # Transform the data
+    df_copy = df.copy()
+    df_copy[new_col_name] = np.log(df[data].values + constant)
+
+    # Return entire dataframe or just transformed data
+    if return_df:
+        return df_copy
+    else:
+        return df_copy[new_col_name]
+
+
+def above_percentile_threshold(X, source_col=None, percentile_threshold=None, new_colname=None):
+    """ Return an area with 1 if X[source_col] is above the specified percentile threshold.
+    Percentile_threshold should in range between 0-1 (e.g. 99th percentile would be .99)
+
+    Parameters
+    ----------
+    X : df
+        A pandas DataFrame
+    source_col : string
+        The column name from which to compute percentile threshold
+    percentile_threshold : float
+        A value between 0-1 that will act as the threshold for column positive value (1 not 0)
+        E.g. .99 woul indicate 99th percentile. All observations with 1 in the resulting column
+        would be above the 99th percentile threshold.
+    new_colname : str
+       Name to give the new computed column. If none specified defaults to:
+       source_col + _above_ + percentile_threshold + _percentile
+
+    Returns
+    -------
+    Boolean
+        True if column appears to be numeric, non binary with cardinality above the specified limit
+    """
+    # Create new column name if none specified
+    if not new_colname:
+        new_colname = source_col + '_above_' + str(percentile_threshold) + '-percentile'
+    if not source_col:
+        raise 'No source column to compute percentile threshold from specified'
+        new_colname = source_col + '_above_' + str(percentile_threshold) + '_percentile'
+    if not percentile_threshold:
+        raise 'No source column to percentile threshold specified. Should be float in range 0-1, eg .75'
+
+    # New column is array with 1 where source col is above specified quantile
+    new_col = np.where(X[source_col] > X[source_col].quantile(percentile_threshold), 1, 0)
+    return X.assign(**{new_colname: new_col})
+
 def identity_df(df):
     """ Return the dataframe. For use with decorators"""
     return df
@@ -217,16 +372,32 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, min_cardina
     # Check if series dtype is a numpy number
     is_numeric = (np.issubdtype(series.dtype, np.number))
     # Check if there are other values in a column besides the designated positive or negative class
+
+
     # If the size of the returned array is > 0, it's not binary
-    is_non_binary = (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0)
-    # Check if the number of unique values in the series is above the cardinality limit
-    is_above_cardinality_minimum =  (len(series.unique()) > cardinality_limit)
-
     try:
-        return is_numeric & is_non_binary & is_above_cardinality_minimum
-
+        is_non_binary = (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0)
     # Type Error occurs when float is compared to string, which would constitute non binary
     # Since this would only occur if there is not a match between the positive/negative values
     # Unique values of the column
     except TypeError:
-        return False
+        is_non_binary = False
+
+
+    # Check if the number of unique values in the series is above the cardinality limit
+    is_above_cardinality_minimum =  (len(series.unique()) > min_cardinality)
+
+    return is_numeric & is_non_binary & is_above_cardinality_minimum
+
+def cast_to_int_allow_nan(x):
+    # If not a float or int
+    if not isinstance(x, float) and not isinstance(x, int):
+        # and any character is alphabetic
+        if any([True for char in x if char.isalpha() or char == '-']):
+               return np.nan
+        else:
+            return int(x)
+    else:
+        if np.isnan(x) or np.isinf(x) or np.isneginf(x):
+            return np.nan
+        return int(x)
