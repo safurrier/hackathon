@@ -4,15 +4,15 @@ from sklearn.base import TransformerMixin
 
 
 class NumericStringCharacterRemover(TransformerMixin):
-    """Take a string column and remove common formatting characters
+    """Take a string column and remove common formatting characters 
     (e.g. 1,000 to 1000 and $10 to 10) and transform to numeric
-
+    
     Parameters
     ----------
     columns : list
         A list of the columns for which to apply this transformation to
     return_numeric : boolean
-        Flag to return the comma-removed data as a numeric column.
+        Flag to return the comma-removed data as a numeric column. 
         Default is set to true
     """
     def __init__(self, columns, return_numeric=True):
@@ -21,7 +21,7 @@ class NumericStringCharacterRemover(TransformerMixin):
 
     def fit(self, X, y=None):
         # Within the selected columns, regex search for commas and replace
-        # with whitespace
+        # with whitespace 
         self.no_commas = X[self.columns].replace(to_replace={',','\$', '-'}, value='', regex=True)
         return self
 
@@ -33,14 +33,14 @@ class NumericStringCharacterRemover(TransformerMixin):
         if self.return_numeric:
             X[self.columns] = X[self.columns].apply(pd.to_numeric)
         return X
-
+    
     def fit_transform(self, X, y=None):
         """Convenience function performing both fit and transform"""
         return self.fit(X).transform(X)
-
+    
 class ColumnNameFormatter(TransformerMixin):
     """ Rename a dataframe's column to underscore, lowercased column names
-
+    
     Parameters
     ----------
     rename_cols : list
@@ -52,39 +52,39 @@ class ColumnNameFormatter(TransformerMixin):
         Default is set to False
     export_mapped_names_path : str
         String export path for csv with the mapping between the old column names
-        and new ones. If left null, will export to current working drive with
+        and new ones. If left null, will export to current working drive with 
         filename ColumnNameFormatter_Name_Map.csv
     """
-
-    def __init__(self, rename_cols=None,
+    
+    def __init__(self, rename_cols=None, 
                  export_mapped_names=False,
                  export_mapped_names_path=None):
         self.rename_cols = rename_cols
         self.export_mapped_names = export_mapped_names
         self.export_mapped_names_path = export_mapped_names_path
-
+    
     def _set_renaming_dict(self, X, rename_cols):
         """ Create a dictionary with keys the columns to rename and
             values their renamed versions"""
-
+        
         # If no specific columns to rename are specified, use all
         # in the data
         if not rename_cols:
             rename_cols = X.columns.values.tolist()
-
+            
         import re
         # Create Regex to remove illegal characters
         illegal_chars = r"[\\()~#%&*{}/:<>?|\"-]"
         illegal_chars_regex = re.compile(illegal_chars)
-
-        # New columns are single strings joined by underscores where
+        
+        # New columns are single strings joined by underscores where 
         # spaces/illegal characters were
-        new_columns = ["_".join(re.sub(illegal_chars_regex, " ", col).split(" ")).lower()
-                                for col
+        new_columns = ["_".join(re.sub(illegal_chars_regex, " ", col).split(" ")).lower() 
+                                for col 
                                 in rename_cols]
         renaming_dict = dict(zip(rename_cols, new_columns))
         return renaming_dict
-
+        
     def fit(self, X, y=None):
         """ Check the logic of the renaming dict property"""
         self.renaming_dict = self._set_renaming_dict(X, self.rename_cols)
@@ -93,7 +93,7 @@ class ColumnNameFormatter(TransformerMixin):
         # Assert that all columns are in the renaming_dict
         #assert all([column in self.renaming_dict.keys() for column in rename_cols])
         return self
-
+        
     def transform(self, X, y=None):
         """ Rename the columns of the dataframe"""
         if self.export_mapped_names:
@@ -101,19 +101,19 @@ class ColumnNameFormatter(TransformerMixin):
             column_name_df = (pd.DataFrame.from_dict(self.renaming_dict, orient='index')
              .reset_index()
              .rename(columns={'index':'original_column_name', 0:'new_column_name'}))
-
+            
             # If no path specified, export to working directory name with this filename
             if not self.export_mapped_names_path:
                 self.export_path = 'ColumnNameFormatter_Name_Map.csv'
             column_name_df.to_csv(self.export_mapped_names_path, index=False)
-
+        
         # Return X with renamed columns
         return X.rename(columns=self.renaming_dict)
-
+    
     def fit_transform(self, X, y=None):
         """Convenience function performing both fit and transform"""
-        return self.fit(X).transform(X)
-
+        return self.fit(X).transform(X)  
+    
 class FeatureLookupTable(TransformerMixin):
     """ Given a feature column and path to lookup table, left join the the data
     and lookup values
@@ -223,7 +223,7 @@ class FeatureLookupTable(TransformerMixin):
             keep_cols = [col for col in keep_cols if col not in self.feature]
             # If a prefix has already been added, remove the updated key column
             # that will have the prefix on it.
-
+            
             # Concat the renamed columns (with suffix added) and the key column
             self.lookup_table = pd.concat([self.lookup_table[keep_cols].add_suffix(self.add_suffix),
                                            self.lookup_table[self.feature]], axis=1)
@@ -255,3 +255,53 @@ class FeatureLookupTable(TransformerMixin):
                 self.lookup_table =  pd.read_pickle(self.table_path)
 
         return self.fit(X, y=y).fitted_data
+    
+    
+    
+# Functions for use with FunctionTransformer
+def replace_column_values(df, col=None, values=None, replacement=None, new_col_name=None):
+    """ Discretize a continuous feature by seperating it into specified quantiles
+    Parameters
+    ----------
+    df : Pandas DataFrame
+        A dataframe containing the data to transform
+    col: str
+        The name of the column to replace certain values in 
+    values: list
+        A list of the values to replace
+    replacement: object
+        Replaces the matches of values
+    new_col_name: str
+        The name of the new column which will have the original with replaced values
+        If None, the original column will be replaced inplace. 
+  
+    Returns
+    ----------  
+    df_copy: Pandas DataFrame
+        The original dataframe with the column's value replaced
+    """
+    # Copy so original is not modified
+    df_copy = df.copy()
+    if not values:
+        return print('Please specify values to replace')
+        
+    if not replacement:
+        return print('Please specify replacement value')
+        
+    
+    # If  column name specified, create new column
+    if new_col_name:
+        df_copy[new_col_name] = df_copy[col].replace(values, replacement)
+    # Else replace old column
+    else:
+        df_copy[col] = df_copy[col].replace(values, replacement)
+    return df_copy
+
+def replace_df_values(df, values):
+    """ Call pd.DataFrame.replace() on a dataframe and return resulting dataframe.
+    Values should be in format of nested dictionaries, 
+    E.g., {‘a’: {‘b’: nan}}, are read as follows: 
+        Look in column ‘a’ for the value ‘b’ and replace it with nan
+    """
+    df_copy = df.copy()
+    return df_copy.replace(values)
