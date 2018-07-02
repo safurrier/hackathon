@@ -604,4 +604,23 @@ def categoric_or_continuous_columns(df, unique_value_to_total_value_ratio_thresh
         return categoric_cols
     else:
         print('Please specify valid return option')
-            
+
+
+def tidy_correlation(df, columns=None, keep_identity_correlations=False):
+    """Given a dataframe and optionally subset of columns, compute correlations
+    between all features. Enable keep_identity_correlations for including the correlation
+    between a feature and itself"""
+    df_copy = df.copy()
+    if columns:
+        df_copy = df_copy[columns]
+
+    df_copy = (df_copy.corr()
+               .reset_index()
+               .melt(id_vars='index', var_name="Paired_Feature", value_name="Correlation")
+               .rename(columns={'index':'Base_Feature'})
+               .sort_values(by='Correlation', ascending=False)
+              )
+    if keep_identity_correlations:
+        return df_copy
+    else:
+        return df_copy.query('Base_Feature != Paired_Feature')            
