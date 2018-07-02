@@ -29,26 +29,26 @@ def basic_preprocessing_text(df, columns=None, case='lower', strip=True, return_
     if return_df:
         return df_copy
     else:
-        return df_copy[columns]   
+        return df_copy[columns]
 
 def replace_column_values(df, col=None, values=None, replacement=None, new_col_name=None):
-    """ Replace values in a given column with specified value. Function form of DataFrame.replace() 
+    """ Replace values in a given column with specified value. Function form of DataFrame.replace()
     Parameters
     ----------
     df : Pandas DataFrame
         A dataframe containing the data to transform
     col: str
-        The name of the column to replace certain values in 
+        The name of the column to replace certain values in
     values: list
         A list of the values to replace
     replacement: object
         Replaces the matches of values
     new_col_name: str
         The name of the new column which will have the original with replaced values
-        If None, the original column will be replaced inplace. 
-  
+        If None, the original column will be replaced inplace.
+
     Returns
-    ----------  
+    ----------
     df_copy: Pandas DataFrame
         The original dataframe with the column's value replaced
     """
@@ -56,11 +56,11 @@ def replace_column_values(df, col=None, values=None, replacement=None, new_col_n
     df_copy = df.copy()
     if not values:
         return print('Please specify values to replace')
-        
+
     if not replacement:
         return print('Please specify replacement value')
-        
-    
+
+
     # If  column name specified, create new column
     if new_col_name:
         df_copy[new_col_name] = df_copy[col].replace(values, replacement)
@@ -70,7 +70,7 @@ def replace_column_values(df, col=None, values=None, replacement=None, new_col_n
     return df_copy
 
 def quantile_binned_feature(df, col=None, quantiles=10, new_col_name=None,
-                            attempt_smaller_quantiles_if_necessary=True, 
+                            attempt_smaller_quantiles_if_necessary=True,
                             rank_data=False, rank_method='average', return_df=False):
     """ Discretize a continuous feature by seperating it into specified quantiles
     Parameters
@@ -86,33 +86,33 @@ def quantile_binned_feature(df, col=None, quantiles=10, new_col_name=None,
         Default is col + '_cut_into_'+str(quantiles)+'_equal_bins'
     attempt_smaller_quantiles_if_necessary: boolean
         Flag to specify whether to recursively try smaller numbers of quantiles until
-        the feature can be split into 'quantiles' number of equal groups. 
+        the feature can be split into 'quantiles' number of equal groups.
         Default is True
     rank_data: Boolean
         Create quantiles from ranks of the data before computing quantiles.
     rank_method: str
         Must be apicable method to pandas.DataFrame.rank(method=rank_method).
-        Default is average. Use 'first' to sort values and rank this way. 
+        Default is average. Use 'first' to sort values and rank this way.
     return_df : boolean
-        Flag to return the entire DataFrame or just the transformed data 
+        Flag to return the entire DataFrame or just the transformed data
         Default is set to False
-  
+
     Returns
-    ----------  
+    ----------
     df_copy[new_col_name]: Pandas Series
-        Default return is Pandas Series of transformed data    
+        Default return is Pandas Series of transformed data
     df_copy: Pandas DataFrame
-        If specified with return_df=True, A copy of the dataframe including transformed data        
+        If specified with return_df=True, A copy of the dataframe including transformed data
     """
     import pandas as pd
-    import numpy as np 
-    
+    import numpy as np
+
     if not col:
         return print('Must pass column name argument')
-    
+
     # Copy df to not alter original
     df_copy = df.copy(deep=True)
-    
+
     # Rank data before hand if necessary
     if rank_data:
         # Special case to sort values low to high
@@ -121,7 +121,7 @@ def quantile_binned_feature(df, col=None, quantiles=10, new_col_name=None,
             df_copy[col] = df_copy[col].sort_values().rank(method='first')
         else:
             df_copy[col] = df_copy[col].rank(method=rank_method)
-            
+
     # Recursive version
     if attempt_smaller_quantiles_if_necessary:
         # Base case
@@ -145,11 +145,11 @@ def quantile_binned_feature(df, col=None, quantiles=10, new_col_name=None,
         # If unable to cut into equal quantiles with this few of bins, reduce by one and try again
         except ValueError:
             #print(quantiles)
-            return_val = quantile_binned_feature(df_copy, col, quantiles=quantiles-1, 
+            return_val = quantile_binned_feature(df_copy, col, quantiles=quantiles-1,
                                                  new_col_name=new_col_name, return_df=return_df)
             return return_val
     # Single attempt
-    else: 
+    else:
         new_col = pd.qcut(df_copy[col], quantiles, labels=[i for i in range(quantiles)])
         # Change default name if none specified
         if not new_col_name:
@@ -163,7 +163,7 @@ def quantile_binned_feature(df, col=None, quantiles=10, new_col_name=None,
             return df
         else:
             return new_col
-        
+
 def log_of_x_plus_constant(df, data=None, constant=1, new_col_name=None, return_df=False):
     """ Apply log(x+1) where x is an array of data in df[data]
     Parameters
@@ -177,19 +177,19 @@ def log_of_x_plus_constant(df, data=None, constant=1, new_col_name=None, return_
         The name to give the new column of transformed data.
         Default is Log( constant + data columnd name)
     return_df : boolean
-        Flag to return the entire DataFrame or just the transformed data 
+        Flag to return the entire DataFrame or just the transformed data
         Default is set to False
-  
+
     Returns
-    ----------  
+    ----------
     df_copy[new_col_name]: Pandas Series
-        Default return is Pandas Series of transformed data    
+        Default return is Pandas Series of transformed data
     df_copy: Pandas DataFrame
-        If specified with return_df=True, A copy of the dataframe including transformed data        
+        If specified with return_df=True, A copy of the dataframe including transformed data
     """
     import pandas as pd
     import numpy as np
-    
+
     if not data:
         print('Must specify data column')
         pass
@@ -199,14 +199,14 @@ def log_of_x_plus_constant(df, data=None, constant=1, new_col_name=None, return_
     # Transform the data
     df_copy = df.copy()
     df_copy[new_col_name] = np.log(df[data].values + constant)
-    
-    # Return entire dataframe or just transformed data 
+
+    # Return entire dataframe or just transformed data
     if return_df:
         return df_copy
     else:
         return df_copy[new_col_name]
-    
-    
+
+
 def above_percentile_threshold(X, source_col=None, percentile_threshold=None, new_colname=None):
     """ Return an area with 1 if X[source_col] is above the specified percentile threshold.
     Percentile_threshold should in range between 0-1 (e.g. 99th percentile would be .99)
@@ -214,13 +214,13 @@ def above_percentile_threshold(X, source_col=None, percentile_threshold=None, ne
     Parameters
     ----------
     X : df
-        A pandas DataFrame 
+        A pandas DataFrame
     source_col : string
         The column name from which to compute percentile threshold
     percentile_threshold : float
         A value between 0-1 that will act as the threshold for column positive value (1 not 0)
         E.g. .99 woul indicate 99th percentile. All observations with 1 in the resulting column
-        would be above the 99th percentile threshold. 
+        would be above the 99th percentile threshold.
     new_colname : str
        Name to give the new computed column. If none specified defaults to:
        source_col + _above_ + percentile_threshold + _percentile
@@ -237,19 +237,19 @@ def above_percentile_threshold(X, source_col=None, percentile_threshold=None, ne
         raise 'No source column to compute percentile threshold from specified'
         new_colname = source_col + '_above_' + str(percentile_threshold) + '_percentile'
     if not percentile_threshold:
-        raise 'No source column to percentile threshold specified. Should be float in range 0-1, eg .75'   
-        
+        raise 'No source column to percentile threshold specified. Should be float in range 0-1, eg .75'
+
     # New column is array with 1 where source col is above specified quantile
     new_col = np.where(X[source_col] > X[source_col].quantile(percentile_threshold), 1, 0)
     return X.assign(**{new_colname: new_col})
 
-def column_above_or_below_threshold(df, column=None, above_or_below='above', 
+def column_above_or_below_threshold(df, column=None, above_or_below='above',
                                     threshold=None, new_col_name=None, return_df=True):
     """ Return a column with 1 if df[source_col] is above/below a certain threshold.
     Parameters
     ----------
     X : df
-        A pandas DataFrame 
+        A pandas DataFrame
     column : string
         The column name from which to compute on
     above_or_below : str
@@ -257,7 +257,7 @@ def column_above_or_below_threshold(df, column=None, above_or_below='above',
         'below' to return 1 if value is below a certain threshold and 0 otherwise
     threshold_upper : int/float
         A value between will act as the upper threshold for column
-        E.g. 45 would with 'above' denoted would return 1 for all values lower than 45        
+        E.g. 45 would with 'above' denoted would return 1 for all values lower than 45
     new_col_name : str
        Name to give the new computed column.
 
@@ -271,21 +271,21 @@ def column_above_or_below_threshold(df, column=None, above_or_below='above',
         new_col_name = column + '_'+ above_or_below +'_' + str(threshold)
     # Checking Arguments
     if not column:
-        raise 'No column to threshold from'  
+        raise 'No column to threshold from'
     if (above_or_below == 'below') | (above_or_below == 'below'):
         raise 'Specify "above" or "below" in argument above_or_below'
-    
-    if above_or_below == 'above':  
+
+    if above_or_below == 'above':
         # New column is array with 1 where source col is above specified threshold
         new_col = np.where(df[column] > df[column], 1, 0)
-    if above_or_below == 'below':    
+    if above_or_below == 'below':
         # New column is array with 1 where source col is above specified threshold
-        new_col = np.where(df[column] > df[column], 1, 0)  
-        
+        new_col = np.where(df[column] > df[column], 1, 0)
+
     if return_df:
         return df.assign(**{new_col_name: new_col})
     else:
-        new_col = pd.Series(new_col, name=new_col_name) 
+        new_col = pd.Series(new_col, name=new_col_name)
 
 def identity_df(df):
     """ Return the dataframe. For use with decorators"""
@@ -477,22 +477,22 @@ def pct_change_from_col(df, anchor_col, diff_col):
     return (df[anchor_col] - df[diff_col]) / df[anchor_col]
 
 def is_numeric_non_categoric(series, positive_val=1, negative_val=0, min_cardinality = 1):
-    """ 
-    Check a series to see if it is numeric and has values other two designated 
-    positive and negative states (default is 0 and 1). Also check for a cardinality limit. 
+    """
+    Check a series to see if it is numeric and has values other two designated
+    positive and negative states (default is 0 and 1). Also check for a cardinality limit.
     Will return False if number of unique values is not above this (default is 1)
 
     Parameters
     ----------
     series : Series
-        A pandas series to check 
+        A pandas series to check
     positive_val : int
         The positive value if series were to be binary
     negative_val : int
         The negative value if the series were to be binary
     min_cardinality : int
         A limit to the cardinality of the series. Anything below this limit will return False.
-        For use when there may be integer transformed categories 
+        For use when there may be integer transformed categories
             (e.g. series Fruit has categories 'Apple', 'Orange', 'Banana' mapped to 1, 2, 3)
 
     Returns
@@ -503,9 +503,9 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, min_cardina
     # Check if series dtype is a numpy number
     is_numeric = (np.issubdtype(series.dtype, np.number))
     # Check if there are other values in a column besides the designated positive or negative class
-    
-    
-    # If the size of the returned array is > 0, it's not binary 
+
+
+    # If the size of the returned array is > 0, it's not binary
     try:
         is_non_binary = (np.setdiff1d(series.unique(), np.array([positive_val,negative_val])).size != 0)
     # Type Error occurs when float is compared to string, which would constitute non binary
@@ -513,10 +513,10 @@ def is_numeric_non_categoric(series, positive_val=1, negative_val=0, min_cardina
     # Unique values of the column
     except TypeError:
         is_non_binary = False
-    
-    
+
+
     # Check if the number of unique values in the series is above the cardinality limit
-    is_above_cardinality_minimum =  (len(series.unique()) > min_cardinality) 
+    is_above_cardinality_minimum =  (len(series.unique()) > min_cardinality)
 
     return is_numeric & is_non_binary & is_above_cardinality_minimum
 
@@ -536,11 +536,72 @@ def cast_to_int_allow_nan(x):
         if np.isnan(x) or np.isinf(x) or np.isneginf(x):
             return np.nan
         return int(x)
-    
+
 def column_is_value(df, column=None, value=None, new_col_name=None, return_df=True):
     """ Return a column of 1s where df[column] == value and 0s if not"""
     df[new_col_name] = np.where(df[column] == value, 1, 0)
     if return_df:
         return df
     else:
-        return df[new_col_name]     
+        return df[new_col_name]
+
+def categoric_or_continuous_columns(df, unique_value_to_total_value_ratio_threshold=.05,
+                      exclude_strings = True, return_dict = False, return_continuous = False, return_categoric = True):
+    """ Determine if a column in a dataframe is continous based on a ratio
+    between the number of unique values in a column and the total number of values
+    Low cardinality values will get cut off if above the specified ratio.
+    Optionally specify return_dict to return a dictionary where values are column names
+    and values are boolean True if categoric and false if continouous
+
+    Default ratio threshold is .05
+
+    'exclude_strings' is True by default (i.e. if a column has string values it will be marked
+    as a categoric column). If looking for columns that may be numeric/continuous but
+    first need to be processed, this can be set to False.
+
+    Parameters
+    ----------
+    df : Pandas DataFrame
+        A DataFrame to search columns within
+    unique_value_to_total_value_ratio_threshold : float
+        The maximum ratio of unique values in a column / total observations. Akin to a cardinality ratio.
+        Default is .05, or that anyting with more than 5% of its values being unique will be considered
+        non-categoric.
+    exclude_strings : Boolean
+        Flag to include all columns with any string values as categoric columns. Default is True.
+    return_dict: Boolean
+        Flag to return a dictionary of the form {column: Categoric_Boolean} where the value is True if a column
+        is categoric. Default is False
+    return_categoric: Boolean
+        Flag to return a list of the categoric columns. Default is True.
+    return_continuous: Boolean
+        Flag to return a list of the continuous columns. Default is False
+
+    Returns
+    -------
+    Boolean
+        True if column appears to be numeric, non binary with cardinality above the specified limit
+    """
+    from collections import OrderedDict
+    likely_categoric = OrderedDict()
+    for column in df.columns:
+        likely_categoric[column] = 1.*df[column].nunique()/df[column].count() < 0.05 #or some other threshold
+
+        # Check if any of the values in the column are strings.
+        if exclude_strings:
+            # If so, its value should be true to indicate it is categoric
+            if df[column].apply(type).eq(str).any():
+                likely_categoric[column] = True
+
+
+    if return_dict:
+        return likely_categoric
+    if return_continuous:
+        continuous_cols = [col for col, value in likely_categoric.items() if not value]
+        return continuous_cols
+    if return_categoric:
+        categoric_cols = [col for col, value in likely_categoric.items() if value]
+        return categoric_cols
+    else:
+        print('Please specify valid return option')
+            
