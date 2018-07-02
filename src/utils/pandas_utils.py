@@ -686,24 +686,32 @@ def variable_mutual_information(df, columns=None,
     mutual_info_features = []
     # For each categoric column
     for column in categoric_cols:
-        # Compute mutual information
-        mi = mutual_info_classif(X, X[column])
-        # Create Dataframe of the feature, paired feature and mutual information
-        mmi_df = pd.DataFrame({'feature':column, 'paired_feature':cols, 'mutual_information': mi})
-        # Add df to list
-        mutual_info_features.append(mmi_df)
+        # Try Categoric, if it doesn't work it's likey due to continuous value. Add to continouous cols
+        try:
+            # Compute mutual information
+            mi = mutual_info_classif(X, X[column])
+            # Create Dataframe of the feature, paired feature and mutual information
+            mmi_df = pd.DataFrame({'feature':column, 'paired_feature':cols, 'mutual_information': mi})
+            # Add df to list
+            mutual_info_features.append(mmi_df)
+        except ValueError:
+            continuous_cols.append(column)
+
 
     for column in continuous_cols:
-        # Compute mutual information
-        mi = mutual_info_regression(X, X[column])
-        # Create Dataframe of the feature, paired feature and mutual information
-        mmi_df = pd.DataFrame({'feature':column, 'paired_feature':cols, 'mutual_information': mi})
-        # Add df to list
-        mutual_info_features.append(mmi_df)
+        try:
+            # Compute mutual information
+            mi = mutual_info_regression(X, X[column])
+            # Create Dataframe of the feature, paired feature and mutual information
+            mmi_df = pd.DataFrame({'feature':column, 'paired_feature':cols, 'mutual_information': mi})
+            # Add df to list
+            mutual_info_features.append(mmi_df)
+        except ValueError:
+            print('Unable to compute mutual information for column {}'.format(column))
 
     # Concat all mutual info into one df
     mutual_information_df = pd.concat(mutual_info_features).sort_values(by='mutual_information', ascending=False)
     # Remove instances where a feature was compared with itself
     mutual_information_df = mutual_information_df[mutual_information_df['feature'] != mutual_information_df['paired_feature']]
     #display(mutual_information_df)
-    return mutual_information_df           
+    return mutual_information_df        
