@@ -4,7 +4,7 @@ import pandas as pd
 def column_values_target_average(df, feature, target,
                                       sample_frequency=True,
                                       freq_weighted_average=True,
-                                      min_mean_target_threshold = 0,
+                                      min_mean_target_threshold = 0, 
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
                                       min_weighted_target_threshold=0):
@@ -24,21 +24,21 @@ def column_values_target_average(df, feature, target,
         Default is true
     freq_weighted_average: Boolean
         Flag to include the frequency weighted average for a given feature value.
-        Default is true
+        Default is true        
     min_mean_target_threshold : float
         The minimum value of the average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the target is
+        E.g. .5 would only return values whose associate with the target is 
         above an average of .5
     min_sample_size: int
         The minimum value of the number of samples for a feature value
         E.g. 5 would only feature values with at least 5 observations in the data
     min_weighted_target_threshold : float
         The minimum value of the frequency weighted average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the frequency weighted target
+        E.g. .5 would only return values whose associate with the frequency weighted target 
         average is above an average of .5
     min_sample_frequency: float
         The minimum value of the frequency of samples for a feature value
-        E.g. .5 would only include feature values with at least 50% of the values in the column
+        E.g. .5 would only include feature values with at least 50% of the values in the column         
 
     Returns
     -------
@@ -54,34 +54,34 @@ def column_values_target_average(df, feature, target,
     )
     # Sum the sample sizes to get total number of samples
     total_samples = grouped_mean_target_df['sample_size'].sum()
-
+    
     # Flags for adding sample frequency and frequency weighted average
     if sample_frequency:
         # Compute frequency
         grouped_mean_target_df['feature_value_frequency'] = grouped_mean_target_df['sample_size'] / total_samples
         # Filter out minimums
         grouped_mean_target_df = grouped_mean_target_df[grouped_mean_target_df['feature_value_frequency'] >= min_sample_frequency]
-
+        
     if freq_weighted_average:
         # Sample frequency must be calculated for frequency weighted average
-        grouped_mean_target_df['feature_value_frequency']  = grouped_mean_target_df['sample_size'] / total_samples
+        grouped_mean_target_df['feature_value_frequency']  = grouped_mean_target_df['sample_size'] / total_samples 
         grouped_mean_target_df['freq_weighted_avg_target'] = grouped_mean_target_df['feature_value_frequency']  * grouped_mean_target_df['avg_target']
         grouped_mean_target_df = grouped_mean_target_df[(grouped_mean_target_df['feature_value_frequency'] >= min_sample_frequency)
                                                        & (grouped_mean_target_df['freq_weighted_avg_target'] >= min_weighted_target_threshold)
                                                        ]
-
+        
         # If sample frequency not included, drop the column
         if not sample_frequency:
             grouped_mean_target_df.drop(labels=['feature_value_frequency'], axis=1, inplace=True)
-
+    
     # Filter out minimum metrics
     grouped_mean_target_df = grouped_mean_target_df[
-        (grouped_mean_target_df['avg_target'] >= min_mean_target_threshold)
+        (grouped_mean_target_df['avg_target'] >= min_mean_target_threshold) 
         & (grouped_mean_target_df['sample_size'] >= min_sample_size)]
+    
 
-
-
-
+    
+    
     return grouped_mean_target_df
 
 
@@ -89,12 +89,12 @@ def column_values_target_average(df, feature, target,
 def df_feature_values_target_average(df, target,
                                                            include=None,
                                                            exclude=None,
-                                      min_mean_target_threshold = 0,
+                                      min_mean_target_threshold = 0, 
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
                                       min_weighted_target_threshold=0):
-
-    """ For a given dataframe and a target column, groupby each column and compute
+    
+    """ For a given dataframe and a target column, groupby each column and compute 
     for each column value the the average target value, feature value sample size,
     feature value frequency, and frequency weighted average target value
 
@@ -110,92 +110,100 @@ def df_feature_values_target_average(df, target,
     include: list
         A list of columns to include when computing
     exclude: list
-        A list of columns to exclude when computing
+        A list of columns to exclude when computing        
     freq_weighted_average: Boolean
         Flag to include the frequency weighted average for a given feature value.
-        Default is true
+        Default is true        
     min_mean_target_threshold : float
         The minimum value of the average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the target is
+        E.g. .5 would only return values whose associate with the target is 
         above an average of .5
     min_sample_size: int
         The minimum value of the number of samples for a feature value
         E.g. 5 would only feature values with at least 5 observations in the data
     min_weighted_target_threshold : float
         The minimum value of the frequency weighted average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the frequency weighted target
+        E.g. .5 would only return values whose associate with the frequency weighted target 
         average is above an average of .5
     min_sample_frequency: float
         The minimum value of the frequency of samples for a feature value
-        E.g. .5 would only include feature values with at least 50% of the values in the column
+        E.g. .5 would only include feature values with at least 50% of the values in the column         
 
     Returns
     -------
     feature_values_target_average_df
         DataFrame of the feature values and their asssociations
     """
-
+    
     # Start with all columns and filter out/include desired columns
     columns_to_check = df.columns.values.tolist()
     if include:
         columns_to_check = [col for col in columns_to_check if col in include]
     if exclude:
         columns_to_check = [col for col in columns_to_check if col not in exclude]
-
+        
     # Compute for all specified columns in dataframe
-    dataframe_lists = [column_values_target_average(df, column, target,
-                                      min_mean_target_threshold = min_mean_target_threshold,
+    dataframe_lists = [column_values_target_average(df, column, target,  
+                                      min_mean_target_threshold = min_mean_target_threshold, 
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
                                       min_weighted_target_threshold = min_weighted_target_threshold)
                      .rename(columns={column:'feature_value'}).assign(feature = column)
-            for column in columns_to_check if column != target]
-
+            for column in columns_to_check if column != target] 
+    
     feature_values_target_average_df = pd.concat(dataframe_lists)
-
+    
     return feature_values_target_average_df
 
-def feature_vals_target_association_dict(df, feature, target,
-                                      min_mean_target_threshold = 0,
+def feature_vals_target_association_dict(df, feature, target,  
+                                      min_mean_target_threshold = 0, 
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
-                                      min_weighted_target_threshold=0):
+                                      min_weighted_target_threshold=0, 
+                                         ignore_binary=True):
     """Return a dictionary of the form column_name:[list of values] for values in a
        feature that have an above certain threshold for feature value mean target value,
        feature value sample size, feature value sample frequency and feature value frequency
        weighted mean target value
-
+       
     """
-    grouped_mean_target = column_values_target_average(df, feature, target,
-                                      min_mean_target_threshold = min_mean_target_threshold,
+    if ignore_binary:
+        # Check to see if only values are 1 and 0. If so, don't compute rest
+        if df[feature].dropna().value_counts().index.isin([0,1]).all():
+            return {feature: []}
+        
+    grouped_mean_target = column_values_target_average(df, feature, target,  
+                                      min_mean_target_threshold = min_mean_target_threshold, 
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
                                       min_weighted_target_threshold = min_weighted_target_threshold)
-
+    
     return {feature: grouped_mean_target[feature].values.tolist()}
-
+    
 
 def df_feature_vals_target_association_dict(df, target,
                                                            include=None,
                                                            exclude=None,
-                                      min_mean_target_threshold = 0,
+                                      min_mean_target_threshold = 0, 
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
-                                      min_weighted_target_threshold=0):
+                                      min_weighted_target_threshold=0,
+                                           ignore_binary=True):
 
-
+    
     columns_to_check = df.columns.values.tolist()
     if include:
         columns_to_check = [col for col in columns_to_check if col in include]
     if exclude:
         columns_to_check = [col for col in columns_to_check if col not in exclude]
-
+        
     # Compute for all specified columns in dataframe
-    list_of_dicts = [feature_vals_target_association_dict(df, column, target,
-                                       min_mean_target_threshold = min_mean_target_threshold,
+    list_of_dicts = [feature_vals_target_association_dict(df, column, target,  
+                                       min_mean_target_threshold = min_mean_target_threshold, 
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
-                                      min_weighted_target_threshold = min_weighted_target_threshold)
+                                      min_weighted_target_threshold = min_weighted_target_threshold,
+                                                         ignore_binary=ignore_binary)
             for column in columns_to_check if column != target]
 
     # Combine into single dictionary if there are any values
@@ -209,11 +217,12 @@ def df_feature_vals_target_association_dict(df, target,
     return combined_dict
 
 
-def get_specific_dummies(df, col_map=None, return_df=True):
+def get_specific_dummies(df, col_map=None, prefix=None, suffix=None, return_df=True):
     """ Given a mapping of column_name: list of values, one hot the values
-    in the column and concat to dataframe
-
-    Example col_map: {'foo':['bar', 'zero']} would create one hot columns
+    in the column and concat to dataframe. Optional arguments to add prefixes 
+    and/or suffixes to created column names.
+    
+    Example col_map: {'foo':['bar', 'zero']} would create one hot columns 
     for the values bar and zero that appear in the column foo"""
     one_hot_cols = []
     for column, value in col_map.items():
@@ -224,17 +233,25 @@ def get_specific_dummies(df, col_map=None, return_df=True):
             one_hot_column.name = column+'_==_'+str(val)
             # add to list of one hot columns
             one_hot_cols.append(one_hot_column)
-    # Concatenate all created arrays together
+    # Concatenate all created arrays together        
     one_hot_cols = pd.concat(one_hot_cols, axis=1)
+    if prefix:
+        one_hot_cols = one_hot_cols.add_prefix(prefix)
+    if suffix:
+        one_hot_cols = one_hot_cols.add_suffix(suffix)        
     if return_df:
         return pd.concat([df, one_hot_cols], axis=1)
     else:
         return one_hot_cols
-
+    
 def one_hot_column_text_match(df, column, text_phrases, case=False):
     """Given a dataframe, text column to search and a list of text phrases, return a binary
        column with 1s when text is present and 0 otherwise
     """
+    # Ignore regex group match warning
+    import warnings
+    warnings.filterwarnings("ignore", 'This pattern has match groups')
+
     # Create regex pattern to match any phrase in list
 
     # The first phrase will be placed in its own groups
@@ -243,25 +260,27 @@ def one_hot_column_text_match(df, column, text_phrases, case=False):
     # If there's more than one phrase
     # Each phrase is placed in its own group () with an OR operand in front of it |
     # and added to the original phrase
-
+    
     if len(text_phrases) > 1:
         subsquent_phrases = "".join(['|({})'.format(phrase) for phrase in text_phrases[1:]])
         regex_pattern += subsquent_phrases
-
+        
     # Cast to string to ensure .str methods work
     df_copy = df.copy()
     df_copy[column] = df_copy[column].astype(str)
-
+    
     matches = df_copy[column].str.contains(regex_pattern, na=False, case=case).astype(int)
-
+    
     # One hot where match is True (must use == otherwise NaNs throw error)
     #one_hot = np.where(matches==True, 1, 0 )
-
+    
     return matches
-
-def get_text_specific_dummies(df, col_map=None, case=False, return_df=True):
+    
+def get_text_specific_dummies(df, col_map=None, case=False, prefix=None, suffix=None, return_df=True):
     """ Given a mapping of column_name: list of values, search for text matches
-    for the phrases in the list
+    for the phrases in the list. Optional arguments to add prefixes 
+    and/or suffixes to created column names.
+    
     Example col_map: {'foo':['bar', 'zero']} would search the text in the values of
     'foo' for any matches of 'bar' OR 'zero' the result is a one hot encoded
     column of matches"""
@@ -269,13 +288,23 @@ def get_text_specific_dummies(df, col_map=None, case=False, return_df=True):
     for column, value in col_map.items():
         # Create one hot encoded arrays for each value specified in key column
         one_hot_column = pd.Series(one_hot_column_text_match(df, column, value, case=case))
-        # Set descriptive name
-        one_hot_column.name = column+'_match_for: '+str(value)[1:-1].replace(r"'", "")
+        # Check if column already exists in df
+        if column+'_match_for: '+str(value)[1:-1].replace(r"'", "") in df.columns.values.tolist():
+            one_hot_column.name = column+'_supplementary_match_for: '+str(value)[1:-1].replace(r"'", "")
+        else:
+            # Set descriptive name
+            one_hot_column.name = column+'_match_for: '+str(value)[1:-1].replace(r"'", "")
         # add to list of one hot columns
         one_hot_cols.append(one_hot_column)
-    # Concatenate all created arrays together
+    # Concatenate all created arrays together        
     one_hot_cols = pd.concat(one_hot_cols, axis=1)
+    if prefix:
+        one_hot_cols = one_hot_cols.add_prefix(prefix)
+    if suffix:
+        one_hot_cols = one_hot_cols.add_suffix(suffix)       
     if return_df:
         return pd.concat([df, one_hot_cols], axis=1)
     else:
-        return one_hot_cols
+        return one_hot_cols      
+    
+   
