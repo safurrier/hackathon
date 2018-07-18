@@ -10,15 +10,15 @@ from sklearn.base import TransformerMixin
 
 
 class NumericStringCharacterRemover(TransformerMixin):
-    """Take a string column and remove common formatting characters 
+    """Take a string column and remove common formatting characters
     (e.g. 1,000 to 1000 and $10 to 10) and transform to numeric
-    
+
     Parameters
     ----------
     columns : list
         A list of the columns for which to apply this transformation to
     return_numeric : boolean
-        Flag to return the comma-removed data as a numeric column. 
+        Flag to return the comma-removed data as a numeric column.
         Default is set to true
     """
     def __init__(self, columns, return_numeric=True):
@@ -27,7 +27,7 @@ class NumericStringCharacterRemover(TransformerMixin):
 
     def fit(self, X, y=None):
         # Within the selected columns, regex search for commas and replace
-        # with whitespace 
+        # with whitespace
         self.no_commas = X[self.columns].replace(to_replace={',','\$', '-'}, value='', regex=True)
         return self
 
@@ -39,14 +39,14 @@ class NumericStringCharacterRemover(TransformerMixin):
         if self.return_numeric:
             X[self.columns] = X[self.columns].apply(pd.to_numeric)
         return X
-    
+
     def fit_transform(self, X, y=None):
         """Convenience function performing both fit and transform"""
         return self.fit(X).transform(X)
-    
+
 class ColumnNameFormatter(TransformerMixin):
     """ Rename a dataframe's column to underscore, lowercased column names
-    
+
     Parameters
     ----------
     rename_cols : list
@@ -58,39 +58,39 @@ class ColumnNameFormatter(TransformerMixin):
         Default is set to False
     export_mapped_names_path : str
         String export path for csv with the mapping between the old column names
-        and new ones. If left null, will export to current working drive with 
+        and new ones. If left null, will export to current working drive with
         filename ColumnNameFormatter_Name_Map.csv
     """
-    
-    def __init__(self, rename_cols=None, 
+
+    def __init__(self, rename_cols=None,
                  export_mapped_names=False,
                  export_mapped_names_path=None):
         self.rename_cols = rename_cols
         self.export_mapped_names = export_mapped_names
         self.export_mapped_names_path = export_mapped_names_path
-    
+
     def _set_renaming_dict(self, X, rename_cols):
         """ Create a dictionary with keys the columns to rename and
             values their renamed versions"""
-        
+
         # If no specific columns to rename are specified, use all
         # in the data
         if not rename_cols:
             rename_cols = X.columns.values.tolist()
-            
+
         import re
         # Create Regex to remove illegal characters
         illegal_chars = r"[\\()~#%&*{}/:<>?|\"-]"
         illegal_chars_regex = re.compile(illegal_chars)
-        
-        # New columns are single strings joined by underscores where 
+
+        # New columns are single strings joined by underscores where
         # spaces/illegal characters were
-        new_columns = ["_".join(re.sub(illegal_chars_regex, " ", col).split(" ")).lower() 
-                                for col 
+        new_columns = ["_".join(re.sub(illegal_chars_regex, " ", col).split(" ")).lower()
+                                for col
                                 in rename_cols]
         renaming_dict = dict(zip(rename_cols, new_columns))
         return renaming_dict
-        
+
     def fit(self, X, y=None):
         """ Check the logic of the renaming dict property"""
         self.renaming_dict = self._set_renaming_dict(X, self.rename_cols)
@@ -99,7 +99,7 @@ class ColumnNameFormatter(TransformerMixin):
         # Assert that all columns are in the renaming_dict
         #assert all([column in self.renaming_dict.keys() for column in rename_cols])
         return self
-        
+
     def transform(self, X, y=None):
         """ Rename the columns of the dataframe"""
         if self.export_mapped_names:
@@ -107,19 +107,19 @@ class ColumnNameFormatter(TransformerMixin):
             column_name_df = (pd.DataFrame.from_dict(self.renaming_dict, orient='index')
              .reset_index()
              .rename(columns={'index':'original_column_name', 0:'new_column_name'}))
-            
+
             # If no path specified, export to working directory name with this filename
             if not self.export_mapped_names_path:
                 self.export_path = 'ColumnNameFormatter_Name_Map.csv'
             column_name_df.to_csv(self.export_mapped_names_path, index=False)
-        
+
         # Return X with renamed columns
         return X.rename(columns=self.renaming_dict)
-    
+
     def fit_transform(self, X, y=None):
         """Convenience function performing both fit and transform"""
-        return self.fit(X).transform(X)  
-    
+        return self.fit(X).transform(X)
+
 class FeatureLookupTable(TransformerMixin):
     """ Given a feature column and path to lookup table, left join the the data
     and lookup values
@@ -229,7 +229,7 @@ class FeatureLookupTable(TransformerMixin):
             keep_cols = [col for col in keep_cols if col not in self.feature]
             # If a prefix has already been added, remove the updated key column
             # that will have the prefix on it.
-            
+
             # Concat the renamed columns (with suffix added) and the key column
             self.lookup_table = pd.concat([self.lookup_table[keep_cols].add_suffix(self.add_suffix),
                                            self.lookup_table[self.feature]], axis=1)
@@ -261,27 +261,27 @@ class FeatureLookupTable(TransformerMixin):
                 self.lookup_table =  pd.read_pickle(self.table_path)
 
         return self.fit(X, y=y).fitted_data
-    
-    
+
+
 class TargetAssociatedFeatureValueAggregator(TransformerMixin):
     """ Given a dataframe, a set of columns and associative target thresholds,
         mine feature values associated with the target class that meet said thresholds.
         Aggregate those features values together and create a one hot encode feature when
         a given observation matches any of the mined features' values.
-        
+
         Currently only works for binary classifier problems where the positive class is
         1 and negative is 0
-        
+
         Example:
 
     """
-    
+
     def __init__(self, include=None, exclude=None, prefix=None, suffix=None,
                  aggregation_method='aggregate',
                  min_mean_target_threshold=0, min_sample_size=0,
                  min_sample_frequency=0, min_weighted_target_threshold=0,
                  ignore_binary=True):
-        
+
         self.aggregation_method = aggregation_method
         self.include = include
         self.exclude = exclude
@@ -292,83 +292,161 @@ class TargetAssociatedFeatureValueAggregator(TransformerMixin):
         self.min_sample_frequency = min_sample_frequency
         self.min_weighted_target_threshold = min_weighted_target_threshold
         self.ignore_binary = ignore_binary
-        """ 
+        """
         Parameters
         ----------
         aggregation_method: str --> Default = 'aggregate'
             Option flag.
             'aggregate'
-                Aggregate feature values from specific a specific feature. 
-                Aggregate those features values together and create a one hot encode 
+                Aggregate feature values from specific a specific feature.
+                Aggregate those features values together and create a one hot encode
                 feature when a given observation matches any of the mined features' values.
             'one_hot'
-                Create one hot encoded variable for every feature value that meets the 
+                Create one hot encoded variable for every feature value that meets the
                 specified thresholds.
                 Warning: Can greatly increase dimensions of data
         include: list
             A list of columns to include when computing
         exclude: list
-            A list of columns to exclude when computing   
+            A list of columns to exclude when computing
         prefix: str
             A string prefix to add to the created columns
         suffix: str
-            A string suffix to add to the created columns        
+            A string suffix to add to the created columns
         min_mean_target_threshold : float
             The minimum value of the average target class to use as cutoff.
-            E.g. .5 would only return values whose associate with the target is 
+            E.g. .5 would only return values whose associate with the target is
             above an average of .5
         min_sample_size: int
             The minimum value of the number of samples for a feature value
             E.g. 5 would only feature values with at least 5 observations in the data
         min_weighted_target_threshold : float
             The minimum value of the frequency weighted average target class to use as cutoff.
-            E.g. .5 would only return values whose associate with the frequency weighted target 
+            E.g. .5 would only return values whose associate with the frequency weighted target
             average is above an average of .5
         min_sample_frequency: float
             The minimum value of the frequency of samples for a feature value
-            E.g. .5 would only include feature values with at least 50% of the values in the column 
+            E.g. .5 would only include feature values with at least 50% of the values in the column
         ignore_binary: boolean
-            Flag to ignore include feature values in columns with binary values [0 or 1] as this is 
+            Flag to ignore include feature values in columns with binary values [0 or 1] as this is
             redundant to aggregate.
             Default is True
         """
-    
+
     def fit(self, X, y):
-        """ 
+        """
         Parameters
         ----------
         X: Pandas DataFrame
             A dat
         y: str/Pandas Series of Target
-            The STRING column name of the target in dataframe X 
+            The STRING column name of the target in dataframe X
         """
         self.X = X
-        
+
         # Check if y is a string (column name) or Pandas Series (target values)
         if isinstance(y, str):
             self.y = y
         if isinstance(y, pd.Series):
             self.y = y.name
         self.one_hot_dict = df_feature_vals_target_association_dict(X, y,
-                                include=self.include, exclude=self.exclude, 
+                                include=self.include, exclude=self.exclude,
                                 min_mean_target_threshold=self.min_mean_target_threshold,
                                 min_sample_size=self.min_sample_size,
                                 min_sample_frequency=self.min_sample_frequency,
                                 min_weighted_target_threshold=self.min_weighted_target_threshold,
-                                ignore_binary=self.ignore_binary                                                              
+                                ignore_binary=self.ignore_binary
                                 )
         return self
-    
+
     def transform(self, X, y=None):
         if not hasattr(self, 'one_hot_dict'):
             return f'{self} has not been fitted yet. Please fit before transforming'
         if self.aggregation_method == 'one_hot':
-            return get_specific_dummies(col_map = self.one_hot_dict, 
+            return get_specific_dummies(col_map = self.one_hot_dict,
                                         prefix=self.prefix, suffix=self.suffix)
         else:
             assert self.aggregation_method == 'aggregate'
-            return get_text_specific_dummies(X, col_map = self.one_hot_dict, 
+            return get_text_specific_dummies(X, col_map = self.one_hot_dict,
                                              prefix=self.prefix, suffix=self.suffix)
+
+
+class DataFrameNullMapFill(TransformerMixin):
+    """ Given a dataframe and a dictionary mapping {column:null_fill_value}, replace the
+        column values where null with specified value
+
+        Example:
+        df = pd.DataFrame([[np.nan, 2, np.nan, 0],
+                           [3, 4, np.nan, 1],
+                           [np.nan, np.nan, np.nan, 5],
+                           [np.nan, 3, np.nan, 4]],
+                           columns=list('ABCD'))
+         df
+             A    B   C  D
+        0  NaN  2.0 NaN  0
+        1  3.0  4.0 NaN  1
+        2  NaN  NaN NaN  5
+        3  NaN  3.0 NaN  4
+
+        filler = DataFrameNullFill(null_column_fill_map={'A': 0, 'B': 1, 'C': 2, 'D': 3})
+
+        filler.fit(df)
+
+        df = filler.transform(df)
+
+            A   B   C   D
+        0   0.0 2.0 2.0 0
+        1   3.0 4.0 2.0 1
+        2   0.0 1.0 2.0 5
+        3   0.0 3.0 2.0 4
+    """
+
+    def __init__(self, null_column_fill_map=None):
+        """
+        Parameters
+        ----------
+        null_column_fill_map: dict
+            A dictionary mapping {column name: nan fill value}
+            E.g. {'A': 0, 'B': 1, 'C': 2, 'D': 3})
+
+        """
+        if not null_column_fill_map:
+            print('Specify a null_column_fill_map')
+        assert isinstance(null_column_fill_map, dict)
+        self.null_column_fill_map = null_column_fill_map
+
+    def fit(self, X, y=None):
+        original_set_with_copy_setting = pd.options.mode.chained_assignment
+        # Disable SettingWithCopy Warning
+        pd.options.mode.chained_assignment = None
+        assert isinstance(X, pd.DataFrame)
+        # First, if there are any Categorical Dtypes, add the fill value
+        # to the categories
+        X_categorical = X.select_dtypes(include='category')
+        # Get list of categorical columns
+        categorical_cols = X_categorical.columns.values.tolist()
+
+        # Find out which categorical columns have a null fill specified
+        categorical_fill_map = {key:value for key, value in self.null_column_fill_map.items()
+                                if key in categorical_cols}
+
+        # For each of those, add the fill value as a category
+        for column in categorical_cols:
+            # If fill value is not in categories, add it
+            if categorical_fill_map[column] not in X_categorical[column].cat.categories.values.tolist():
+                X_categorical[column] = X_categorical[column].cat.add_categories([categorical_fill_map[column]])
+
+        # Replace the updated columns
+        X[categorical_cols] = X_categorical[categorical_cols]
+        # Set state and return to original SettingWithCopy Warning setting
+        pd.options.mode.chained_assignment = original_set_with_copy_setting
+        self.is_fit=True
+        return self
+
+    def transform(self, X, y=None):
+        X_copy = X
+        X_transformed = X_copy.fillna(value=self.null_column_fill_map)
+        return X_transformed
 
 ###############################################################################################################
 # Functions used with Transformers
@@ -377,7 +455,7 @@ class TargetAssociatedFeatureValueAggregator(TransformerMixin):
 def column_values_target_average(df, feature, target,
                                       sample_frequency=True,
                                       freq_weighted_average=True,
-                                      min_mean_target_threshold = 0, 
+                                      min_mean_target_threshold = 0,
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
                                       min_weighted_target_threshold=0):
@@ -397,21 +475,21 @@ def column_values_target_average(df, feature, target,
         Default is true
     freq_weighted_average: Boolean
         Flag to include the frequency weighted average for a given feature value.
-        Default is true        
+        Default is true
     min_mean_target_threshold : float
         The minimum value of the average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the target is 
+        E.g. .5 would only return values whose associate with the target is
         above an average of .5
     min_sample_size: int
         The minimum value of the number of samples for a feature value
         E.g. 5 would only feature values with at least 5 observations in the data
     min_weighted_target_threshold : float
         The minimum value of the frequency weighted average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the frequency weighted target 
+        E.g. .5 would only return values whose associate with the frequency weighted target
         average is above an average of .5
     min_sample_frequency: float
         The minimum value of the frequency of samples for a feature value
-        E.g. .5 would only include feature values with at least 50% of the values in the column         
+        E.g. .5 would only include feature values with at least 50% of the values in the column
 
     Returns
     -------
@@ -427,34 +505,34 @@ def column_values_target_average(df, feature, target,
     )
     # Sum the sample sizes to get total number of samples
     total_samples = grouped_mean_target_df['sample_size'].sum()
-    
+
     # Flags for adding sample frequency and frequency weighted average
     if sample_frequency:
         # Compute frequency
         grouped_mean_target_df['feature_value_frequency'] = grouped_mean_target_df['sample_size'] / total_samples
         # Filter out minimums
         grouped_mean_target_df = grouped_mean_target_df[grouped_mean_target_df['feature_value_frequency'] >= min_sample_frequency]
-        
+
     if freq_weighted_average:
         # Sample frequency must be calculated for frequency weighted average
-        grouped_mean_target_df['feature_value_frequency']  = grouped_mean_target_df['sample_size'] / total_samples 
+        grouped_mean_target_df['feature_value_frequency']  = grouped_mean_target_df['sample_size'] / total_samples
         grouped_mean_target_df['freq_weighted_avg_target'] = grouped_mean_target_df['feature_value_frequency']  * grouped_mean_target_df['avg_target']
         grouped_mean_target_df = grouped_mean_target_df[(grouped_mean_target_df['feature_value_frequency'] >= min_sample_frequency)
                                                        & (grouped_mean_target_df['freq_weighted_avg_target'] >= min_weighted_target_threshold)
                                                        ]
-        
+
         # If sample frequency not included, drop the column
         if not sample_frequency:
             grouped_mean_target_df.drop(labels=['feature_value_frequency'], axis=1, inplace=True)
-    
+
     # Filter out minimum metrics
     grouped_mean_target_df = grouped_mean_target_df[
-        (grouped_mean_target_df['avg_target'] >= min_mean_target_threshold) 
+        (grouped_mean_target_df['avg_target'] >= min_mean_target_threshold)
         & (grouped_mean_target_df['sample_size'] >= min_sample_size)]
-    
 
-    
-    
+
+
+
     return grouped_mean_target_df
 
 
@@ -462,12 +540,12 @@ def column_values_target_average(df, feature, target,
 def df_feature_values_target_average(df, target,
                                                            include=None,
                                                            exclude=None,
-                                      min_mean_target_threshold = 0, 
+                                      min_mean_target_threshold = 0,
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
                                       min_weighted_target_threshold=0):
-    
-    """ For a given dataframe and a target column, groupby each column and compute 
+
+    """ For a given dataframe and a target column, groupby each column and compute
     for each column value the the average target value, feature value sample size,
     feature value frequency, and frequency weighted average target value
 
@@ -483,96 +561,96 @@ def df_feature_values_target_average(df, target,
     include: list
         A list of columns to include when computing
     exclude: list
-        A list of columns to exclude when computing        
+        A list of columns to exclude when computing
     freq_weighted_average: Boolean
         Flag to include the frequency weighted average for a given feature value.
-        Default is true        
+        Default is true
     min_mean_target_threshold : float
         The minimum value of the average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the target is 
+        E.g. .5 would only return values whose associate with the target is
         above an average of .5
     min_sample_size: int
         The minimum value of the number of samples for a feature value
         E.g. 5 would only feature values with at least 5 observations in the data
     min_weighted_target_threshold : float
         The minimum value of the frequency weighted average target class to use as cutoff.
-        E.g. .5 would only return values whose associate with the frequency weighted target 
+        E.g. .5 would only return values whose associate with the frequency weighted target
         average is above an average of .5
     min_sample_frequency: float
         The minimum value of the frequency of samples for a feature value
-        E.g. .5 would only include feature values with at least 50% of the values in the column         
+        E.g. .5 would only include feature values with at least 50% of the values in the column
 
     Returns
     -------
     feature_values_target_average_df
         DataFrame of the feature values and their asssociations
     """
-    
+
     # Start with all columns and filter out/include desired columns
     columns_to_check = df.columns.values.tolist()
     if include:
         columns_to_check = [col for col in columns_to_check if col in include]
     if exclude:
         columns_to_check = [col for col in columns_to_check if col not in exclude]
-        
+
     # Compute for all specified columns in dataframe
-    dataframe_lists = [column_values_target_average(df, column, target,  
-                                      min_mean_target_threshold = min_mean_target_threshold, 
+    dataframe_lists = [column_values_target_average(df, column, target,
+                                      min_mean_target_threshold = min_mean_target_threshold,
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
                                       min_weighted_target_threshold = min_weighted_target_threshold)
                      .rename(columns={column:'feature_value'}).assign(feature = column)
-            for column in columns_to_check if column != target] 
-    
+            for column in columns_to_check if column != target]
+
     feature_values_target_average_df = pd.concat(dataframe_lists)
-    
+
     return feature_values_target_average_df
 
-def feature_vals_target_association_dict(df, feature, target,  
-                                      min_mean_target_threshold = 0, 
+def feature_vals_target_association_dict(df, feature, target,
+                                      min_mean_target_threshold = 0,
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
-                                      min_weighted_target_threshold=0, 
+                                      min_weighted_target_threshold=0,
                                          ignore_binary=True):
     """Return a dictionary of the form column_name:[list of values] for values in a
        feature that have an above certain threshold for feature value mean target value,
        feature value sample size, feature value sample frequency and feature value frequency
        weighted mean target value
-       
+
     """
     if ignore_binary:
         # Check to see if only values are 1 and 0. If so, don't compute rest
         if df[feature].dropna().value_counts().index.isin([0,1]).all():
             return {feature: []}
-        
-    grouped_mean_target = column_values_target_average(df, feature, target,  
-                                      min_mean_target_threshold = min_mean_target_threshold, 
+
+    grouped_mean_target = column_values_target_average(df, feature, target,
+                                      min_mean_target_threshold = min_mean_target_threshold,
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
                                       min_weighted_target_threshold = min_weighted_target_threshold)
-    
+
     return {feature: grouped_mean_target[feature].values.tolist()}
-    
+
 
 def df_feature_vals_target_association_dict(df, target,
                                                            include=None,
                                                            exclude=None,
-                                      min_mean_target_threshold = 0, 
+                                      min_mean_target_threshold = 0,
                                       min_sample_size = 0,
                                       min_sample_frequency = 0,
                                       min_weighted_target_threshold=0,
                                            ignore_binary=True):
 
-    
+
     columns_to_check = df.columns.values.tolist()
     if include:
         columns_to_check = [col for col in columns_to_check if col in include]
     if exclude:
         columns_to_check = [col for col in columns_to_check if col not in exclude]
-        
+
     # Compute for all specified columns in dataframe
-    list_of_dicts = [feature_vals_target_association_dict(df, column, target,  
-                                       min_mean_target_threshold = min_mean_target_threshold, 
+    list_of_dicts = [feature_vals_target_association_dict(df, column, target,
+                                       min_mean_target_threshold = min_mean_target_threshold,
                                       min_sample_size = min_sample_size,
                                       min_sample_frequency = min_sample_frequency,
                                       min_weighted_target_threshold = min_weighted_target_threshold,
@@ -592,10 +670,10 @@ def df_feature_vals_target_association_dict(df, target,
 
 def get_specific_dummies(df, col_map=None, prefix=None, suffix=None, return_df=True):
     """ Given a mapping of column_name: list of values, one hot the values
-    in the column and concat to dataframe. Optional arguments to add prefixes 
+    in the column and concat to dataframe. Optional arguments to add prefixes
     and/or suffixes to created column names.
-    
-    Example col_map: {'foo':['bar', 'zero']} would create one hot columns 
+
+    Example col_map: {'foo':['bar', 'zero']} would create one hot columns
     for the values bar and zero that appear in the column foo"""
     one_hot_cols = []
     for column, value in col_map.items():
@@ -606,17 +684,17 @@ def get_specific_dummies(df, col_map=None, prefix=None, suffix=None, return_df=T
             one_hot_column.name = column+'_==_'+str(val)
             # add to list of one hot columns
             one_hot_cols.append(one_hot_column)
-    # Concatenate all created arrays together        
+    # Concatenate all created arrays together
     one_hot_cols = pd.concat(one_hot_cols, axis=1)
     if prefix:
         one_hot_cols = one_hot_cols.add_prefix(prefix)
     if suffix:
-        one_hot_cols = one_hot_cols.add_suffix(suffix)        
+        one_hot_cols = one_hot_cols.add_suffix(suffix)
     if return_df:
         return pd.concat([df, one_hot_cols], axis=1)
     else:
         return one_hot_cols
-    
+
 def one_hot_column_text_match(df, column, text_phrases, case=False):
     """Given a dataframe, text column to search and a list of text phrases, return a binary
        column with 1s when text is present and 0 otherwise
@@ -633,27 +711,27 @@ def one_hot_column_text_match(df, column, text_phrases, case=False):
     # If there's more than one phrase
     # Each phrase is placed in its own group () with an OR operand in front of it |
     # and added to the original phrase
-    
+
     if len(text_phrases) > 1:
         subsquent_phrases = "".join(['|({})'.format(phrase) for phrase in text_phrases[1:]])
         regex_pattern += subsquent_phrases
-        
+
     # Cast to string to ensure .str methods work
     df_copy = df.copy()
     df_copy[column] = df_copy[column].astype(str)
-    
+
     matches = df_copy[column].str.contains(regex_pattern, na=False, case=case).astype(int)
-    
+
     # One hot where match is True (must use == otherwise NaNs throw error)
     #one_hot = np.where(matches==True, 1, 0 )
-    
+
     return matches
-    
+
 def get_text_specific_dummies(df, col_map=None, case=False, prefix=None, suffix=None, return_df=True):
     """ Given a mapping of column_name: list of values, search for text matches
-    for the phrases in the list. Optional arguments to add prefixes 
+    for the phrases in the list. Optional arguments to add prefixes
     and/or suffixes to created column names.
-    
+
     Example col_map: {'foo':['bar', 'zero']} would search the text in the values of
     'foo' for any matches of 'bar' OR 'zero' the result is a one hot encoded
     column of matches"""
@@ -669,18 +747,18 @@ def get_text_specific_dummies(df, col_map=None, case=False, prefix=None, suffix=
             one_hot_column.name = column+'_match_for: '+str(value)[1:-1].replace(r"'", "")
         # add to list of one hot columns
         one_hot_cols.append(one_hot_column)
-    # Concatenate all created arrays together        
+    # Concatenate all created arrays together
     one_hot_cols = pd.concat(one_hot_cols, axis=1)
     if prefix:
         one_hot_cols = one_hot_cols.add_prefix(prefix)
     if suffix:
-        one_hot_cols = one_hot_cols.add_suffix(suffix)       
+        one_hot_cols = one_hot_cols.add_suffix(suffix)
     if return_df:
         return pd.concat([df, one_hot_cols], axis=1)
     else:
-        return one_hot_cols    
-    
-       
+        return one_hot_cols
+
+
 # Functions for use with FunctionTransformer
 def replace_column_values(df, col=None, values=None, replacement=None, new_col_name=None):
     """ Discretize a continuous feature by seperating it into specified quantiles
@@ -689,17 +767,17 @@ def replace_column_values(df, col=None, values=None, replacement=None, new_col_n
     df : Pandas DataFrame
         A dataframe containing the data to transform
     col: str
-        The name of the column to replace certain values in 
+        The name of the column to replace certain values in
     values: list
         A list of the values to replace
     replacement: object
         Replaces the matches of values
     new_col_name: str
         The name of the new column which will have the original with replaced values
-        If None, the original column will be replaced inplace. 
-  
+        If None, the original column will be replaced inplace.
+
     Returns
-    ----------  
+    ----------
     df_copy: Pandas DataFrame
         The original dataframe with the column's value replaced
     """
@@ -707,11 +785,11 @@ def replace_column_values(df, col=None, values=None, replacement=None, new_col_n
     df_copy = df.copy()
     if not values:
         return print('Please specify values to replace')
-        
+
     if not replacement:
         return print('Please specify replacement value')
-        
-    
+
+
     # If  column name specified, create new column
     if new_col_name:
         df_copy[new_col_name] = df_copy[col].replace(values, replacement)
@@ -722,18 +800,9 @@ def replace_column_values(df, col=None, values=None, replacement=None, new_col_n
 
 def replace_df_values(df, values):
     """ Call pd.DataFrame.replace() on a dataframe and return resulting dataframe.
-    Values should be in format of nested dictionaries, 
-    E.g., {‘a’: {‘b’: nan}}, are read as follows: 
+    Values should be in format of nested dictionaries,
+    E.g., {‘a’: {‘b’: nan}}, are read as follows:
         Look in column ‘a’ for the value ‘b’ and replace it with nan
     """
     df_copy = df.copy()
     return df_copy.replace(values)
-
-    
-    
-    
-
-    
-    
-    
-    
