@@ -28,8 +28,7 @@ echo y | conda create --name $project_name python jupyter
 # Activate environment
 source activate $project_name
 # Attach kernel of this environment for use with jupyter 
-kernel_name='Python '$project_name
-python -m ipykernel install --user --name $project_name --display-name $kernel_name
+python -m ipykernel install --user --name $project_name --display-name $project_name
 
 # Install requirements 
 make requirements
