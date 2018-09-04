@@ -7,7 +7,6 @@ conda install -y -c conda-forge jupyterlab
 jupyter labextension install @jupyterlab/toc
 
 # Flake8 integration
-conda install -y flake8
 jupyter labextension install jupyterlab-flake8
 
 # Bokeh Integration

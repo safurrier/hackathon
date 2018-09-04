@@ -25,18 +25,20 @@ eval $(parse_yaml config.yaml)
 
 # Create conda environment with project name
 echo y | conda create --name $project_name python jupyter
+# Activate environment
+source activate $project_name
 # Attach kernel of this environment for use with jupyter 
 kernel_name='Python '$project_name
 python -m ipykernel install --user --name $project_name --display-name $kernel_name
 
-# Activate environment, install requirements 
-source activate $project_name
+# Install requirements 
 make requirements
 
 # Install utils from github
 cd src
 git clone https://github.com/safurrier/data-science-utils
 mv data-science-utils utils
+cd ..
 
 # Checkout new branch for dev
 git checkout -b dailylab
