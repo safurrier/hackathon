@@ -33,7 +33,10 @@ python -m ipykernel install --user --name $project_name --display-name $kernel_n
 source activate $project_name
 make requirements
 
-cd src/utils
+# Install utils from github
+cd src
+git clone https://github.com/safurrier/data-science-utils
+mv data-science-utils utils
 
 # Checkout new branch for dev
 git checkout -b dailylab
