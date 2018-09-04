@@ -431,7 +431,7 @@ class DataFrameNullMapFill(TransformerMixin):
                                 if key in categorical_cols}
 
         # For each of those, add the fill value as a category
-        for column in categorical_cols:
+        for column in list(categorical_fill_map.keys()):
             # If fill value is not in categories, add it
             if categorical_fill_map[column] not in X_categorical[column].cat.categories.values.tolist():
                 X_categorical[column] = X_categorical[column].cat.add_categories([categorical_fill_map[column]])

@@ -12,6 +12,16 @@ environment properly.
 This will initialize a git repo and make a first commit. It will also create a conda environment and
 kernel with the name specified in the config file before installing dependencies.
 
+Be sure to uncomment lines:
+
+> /data/
+> reports/data-profiling/*
+
+From .gitignore file if data should be ignored in versioning
+
+To install various useful Jupyter Lab extensions, run:
+
+> . ./jupyter-extensions.sh
 
 Project Organization
 ------------
