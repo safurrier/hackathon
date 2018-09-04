@@ -33,5 +33,7 @@ python -m ipykernel install --user --name $project_name --display-name $kernel_n
 source activate $project_name
 make requirements
 
+cd src/utils
+
 # Checkout new branch for dev
 git checkout -b dailylab
