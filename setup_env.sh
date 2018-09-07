@@ -39,5 +39,8 @@ git clone https://github.com/safurrier/data-science-utils
 mv data-science-utils utils
 cd ..
 
+# Remove origin from default-data-science-project repo
+git remote remove origin
+
 # Checkout new branch for dev
 #git checkout -b dailylab
