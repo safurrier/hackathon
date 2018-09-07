@@ -40,4 +40,4 @@ mv data-science-utils utils
 cd ..
 
 # Checkout new branch for dev
-git checkout -b dailylab
+#git checkout -b dailylab
