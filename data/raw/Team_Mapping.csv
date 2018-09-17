@@ -1,0 +1,690 @@
+Team_id,Season_id,Arena_id,Conference_id,Division_id,Short_Name,Nickname,City,State,Country
+1610612737,22003,135,East,Central,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22004,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22005,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22006,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22007,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22008,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22009,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22010,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22011,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22012,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22013,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22014,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22015,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22016,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,22017,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42007,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42008,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42009,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42010,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42011,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42012,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42013,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42014,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42015,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612737,42016,135,East,Southeast,Atlanta,Hawks,Atlanta,GA,USA
+1610612738,22003,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22004,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22005,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22006,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22007,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22008,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22009,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22010,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22011,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22012,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22013,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22014,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22015,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22016,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,22017,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42003,,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42004,,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42007,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42008,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42009,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42010,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42011,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42012,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42014,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42015,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42016,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612738,42017,17,East,Atlantic,Boston,Celtics,Boston,MA,USA
+1610612739,22003,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22004,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22005,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22006,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22007,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22008,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22009,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22010,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22011,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22012,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22013,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22014,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22015,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22016,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,22017,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42005,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42006,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42007,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42008,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42009,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42014,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42015,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42016,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612739,42017,22,East,Central,Cleveland,Cavaliers,Cleveland,OH,USA
+1610612740,22003,160,East,Central,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22004,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22005,196,West,Southwest,New Orleans/Oklahoma City,Hornets,New Orleans/Oklahoma City,LA,USA
+1610612740,22006,196,West,Southwest,New Orleans/Oklahoma City,Hornets,New Orleans/Oklahoma City,LA,USA
+1610612740,22007,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22008,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22009,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22010,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22011,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22012,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,22013,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,22014,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,22015,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,22016,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,22017,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,42003,,East,Central,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,42007,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,42008,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,42010,160,West,Southwest,New Orleans,Hornets,New Orleans,LA,USA
+1610612740,42014,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612740,42017,160,West,Southwest,New Orleans,Pelicans,New Orleans,LA,USA
+1610612741,22003,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22004,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22005,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22006,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22007,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22008,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22009,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22010,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22011,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22012,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22013,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22014,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22015,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22016,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,22017,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42004,,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42005,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42006,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42008,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42009,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42010,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42011,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42012,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42013,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42014,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612741,42016,66,East,Central,Chicago,Bulls,Chicago,IL,USA
+1610612742,22003,193,West,Midwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22004,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22005,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22006,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22007,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22008,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22009,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22010,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22011,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22012,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22013,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22014,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22015,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22016,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,22017,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42003,,West,Midwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42004,,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42005,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42006,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42007,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42008,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42009,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42010,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42011,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42013,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42014,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612742,42015,193,West,Southwest,Dallas,Mavericks,Dallas,TX,USA
+1610612743,22003,139,West,Midwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22004,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22005,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22006,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22007,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22008,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22009,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22010,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22011,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22012,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22013,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22014,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22015,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22016,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,22017,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42003,,West,Midwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42004,,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42005,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42006,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42007,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42008,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42009,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42010,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42011,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612743,42012,139,West,Northwest,Denver,Nuggets,Denver,CO,USA
+1610612744,22003,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22004,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22005,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22006,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22007,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22008,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22009,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22010,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22011,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22012,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22013,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22014,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22015,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22016,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,22017,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42006,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42012,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42013,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42014,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42015,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42016,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612744,42017,71,West,Pacific,Golden State,Warriors,Golden State,CA,USA
+1610612745,22003,215,West,Midwest,Houston,Rockets,Houston,TX,USA
+1610612745,22004,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22005,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22006,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22007,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22008,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22009,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22010,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22011,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22012,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22013,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22014,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22015,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22016,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,22017,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42003,,West,Midwest,Houston,Rockets,Houston,TX,USA
+1610612745,42004,,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42006,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42007,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42008,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42012,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42013,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42014,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42015,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42016,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612745,42017,215,West,Southwest,Houston,Rockets,Houston,TX,USA
+1610612746,22003,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22004,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22005,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22006,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22007,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22008,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22009,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22010,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22011,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22012,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22013,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22014,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,22015,137,West,Pacific,LA Clippers,Clippers,LA,CA,USA
+1610612746,22016,137,West,Pacific,LA Clippers,Clippers,LA,CA,USA
+1610612746,22017,137,West,Pacific,LA Clippers,Clippers,LA,CA,USA
+1610612746,42005,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,42011,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,42012,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,42013,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,42014,137,West,Pacific,L.A. Clippers,Clippers,Los Angeles,CA,USA
+1610612746,42015,137,West,Pacific,LA Clippers,Clippers,LA,CA,USA
+1610612746,42016,137,West,Pacific,LA Clippers,Clippers,LA,CA,USA
+1610612747,22003,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22004,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22005,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22006,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22007,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22008,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22009,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22010,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22011,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22012,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22013,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22014,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22015,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22016,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,22017,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42003,,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42005,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42006,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42007,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42008,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42009,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42010,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42011,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612747,42012,137,West,Pacific,L.A. Lakers,Lakers,Los Angeles,CA,USA
+1610612748,22003,146,East,Atlantic,Miami,Heat,Miami,FL,USA
+1610612748,22004,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22005,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22006,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22007,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22008,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22009,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22010,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22011,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22012,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22013,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22014,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22015,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22016,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,22017,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42003,,East,Atlantic,Miami,Heat,Miami,FL,USA
+1610612748,42004,,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42005,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42006,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42008,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42009,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42010,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42011,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42012,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42013,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42015,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612748,42017,146,East,Southeast,Miami,Heat,Miami,FL,USA
+1610612749,22003,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22004,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22005,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22006,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22007,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22008,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22009,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22010,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22011,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22012,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22013,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22014,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22015,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22016,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,22017,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42003,,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42005,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42009,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42012,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42014,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42016,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612749,42017,5,East,Central,Milwaukee,Bucks,Milwaukee,WI,USA
+1610612750,22003,61,West,Midwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22004,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22005,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22006,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22007,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22008,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22009,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22010,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22011,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22012,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22013,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22014,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22015,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22016,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,22017,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,42003,,West,Midwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612750,42017,61,West,Northwest,Minnesota,Timberwolves,Minnesota,MN,USA
+1610612751,22003,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22004,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22005,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22006,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22007,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22008,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22009,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22010,389,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22011,389,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,22012,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,22013,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,22014,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,22015,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,22016,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,22017,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,42003,,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,42004,,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,42005,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,42006,11,East,Atlantic,New Jersey,Nets,New Jersey,NJ,USA
+1610612751,42012,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,42013,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612751,42014,461,East,Atlantic,Brooklyn,Nets,Brooklyn,NY,USA
+1610612752,22003,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22004,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22005,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22006,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22007,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22008,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22009,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22010,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22011,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22012,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22013,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22014,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22015,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22016,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,22017,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,42003,,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,42010,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,42011,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612752,42012,30,East,Atlantic,New York,Knicks,New York,NY,USA
+1610612753,22003,155,East,Atlantic,Orlando,Magic,Orlando,FL,USA
+1610612753,22004,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22005,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22006,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22007,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22008,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22009,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22010,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22011,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22012,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22013,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22014,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22015,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22016,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,22017,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42006,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42007,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42008,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42009,155,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42010,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612753,42011,430,East,Southeast,Orlando,Magic,Orlando,FL,USA
+1610612754,22003,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22004,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22005,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22006,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22007,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22008,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22009,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22010,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22011,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22012,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22013,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22014,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22015,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22016,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,22017,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42003,,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42004,,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42005,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42010,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42011,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42012,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42013,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42015,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42016,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612754,42017,136,East,Central,Indiana,Pacers,Indiana,IN,USA
+1610612755,22003,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22004,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22005,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22006,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22007,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22008,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22009,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22010,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22011,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22012,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22013,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22014,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22015,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22016,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,22017,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42004,,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42007,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42008,130,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42010,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42011,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612755,42017,419,East,Atlantic,Philadelphia,76ers,Philadelphia,PA,USA
+1610612756,22003,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22004,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22005,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22006,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22007,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22008,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22009,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22010,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22011,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22012,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22013,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22014,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22015,584,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22016,584,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,22017,584,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,42004,,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,42005,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,42006,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,42007,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612756,42009,2,West,Pacific,Phoenix,Suns,Phoenix,AZ,USA
+1610612757,22003,51,West,Pacific,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22004,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22005,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22006,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22007,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22008,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22009,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22010,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22011,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22012,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22013,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22014,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22015,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22016,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,22017,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42008,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42009,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42010,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42013,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42014,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42015,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42016,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612757,42017,51,West,Northwest,Portland,Trail Blazers,Portland,OR,USA
+1610612758,22003,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22004,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22005,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22006,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22007,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22008,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22009,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22010,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22011,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22012,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22013,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22014,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22015,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22016,609,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,22017,609,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,42003,,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,42004,,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612758,42005,3,West,Pacific,Sacramento,Kings,Sacramento,CA,USA
+1610612759,22003,199,West,Midwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22004,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22005,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22006,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22007,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22008,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22009,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22010,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22011,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22012,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22013,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22014,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22015,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22016,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,22017,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42003,,West,Midwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42004,,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42005,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42006,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42007,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42008,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42009,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42010,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42011,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42012,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42013,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42014,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42015,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42016,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612759,42017,199,West,Southwest,San Antonio,Spurs,San Antonio,TX,USA
+1610612760,22003,72,West,Pacific,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,22004,72,West,Northwest,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,22005,72,West,Northwest,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,22006,72,West,Northwest,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,22007,72,West,Northwest,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,22008,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22009,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22010,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22011,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22012,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22013,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22014,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22015,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22016,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,22017,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42004,,West,Northwest,Seattle,SuperSonics,Seattle,WA,USA
+1610612760,42009,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42010,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42011,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42012,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42013,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42015,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42016,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612760,42017,196,West,Northwest,Oklahoma City,Thunder,Oklahoma City,OK,USA
+1610612761,22003,116,East,Central,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22004,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22005,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22006,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22007,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22008,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22009,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22010,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22011,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22012,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22013,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22014,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22015,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22016,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,22017,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42006,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42007,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42013,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42014,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42015,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42016,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612761,42017,116,East,Atlantic,Toronto,Raptors,Toronto,ON,Canada
+1610612762,22003,15,West,Midwest,Utah,Jazz,Utah,UT,USA
+1610612762,22004,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22005,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22006,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22007,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22008,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22009,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22010,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22011,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22012,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22013,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22014,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22015,596,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22016,596,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,22017,596,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42006,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42007,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42008,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42009,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42011,15,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42016,596,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612762,42017,596,West,Northwest,Utah,Jazz,Utah,UT,USA
+1610612763,22003,48,West,Midwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22004,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22005,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22006,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22007,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22008,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22009,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22010,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22011,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22012,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22013,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22014,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22015,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22016,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,22017,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42003,,West,Midwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42004,,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42005,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42010,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42011,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42012,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42013,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42014,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42015,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612763,42016,242,West,Southwest,Memphis,Grizzlies,Memphis,TN,USA
+1610612764,22003,77,East,Atlantic,Washington,Wizards,Washington,DC,USA
+1610612764,22004,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22005,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22006,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22007,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22008,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22009,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22010,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22011,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22012,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22013,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22014,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22015,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22016,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,22017,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42004,,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42005,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42006,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42007,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42013,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42014,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42016,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612764,42017,77,East,Southeast,Washington,Wizards,Washington,DC,USA
+1610612765,22003,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22004,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22005,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22006,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22007,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22008,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22009,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22010,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22011,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22012,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22013,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22014,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22015,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22016,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,22017,624,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42003,,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42004,,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42005,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42006,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42007,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42008,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612765,42015,44,East,Central,Detroit,Pistons,Detroit,MI,USA
+1610612766,22004,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22005,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22006,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22007,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22008,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22009,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22010,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22011,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22012,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22013,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,22014,9,East,Southeast,Charlotte,Hornets,Charlotte,NC,USA
+1610612766,22015,9,East,Southeast,Charlotte,Hornets,Charlotte,NC,USA
+1610612766,22016,9,East,Southeast,Charlotte,Hornets,Charlotte,NC,USA
+1610612766,22017,9,East,Southeast,Charlotte,Hornets,Charlotte,NC,USA
+1610612766,42009,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,42013,9,East,Southeast,Charlotte,Bobcats,Charlotte,NC,USA
+1610612766,42015,9,East,Southeast,Charlotte,Hornets,Charlotte,NC,USA
