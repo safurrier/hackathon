@@ -1,10 +1,8 @@
-default-data-science-project
+NBA Hackathon Code
 ==============================
+Author: Alex Furrier
 
-A default project structure for data projects. Created with reproducibility and automation in mind.
-Data and script execution should be kept within the Make pipeline. 
-
-To start: set the 'project_name' variable in the config file. Then run the bash script to setup the 
+To start: run the bash script to setup the conda
 environment properly.
 
 > . ./setup_env.sh
